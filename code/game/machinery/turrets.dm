@@ -361,7 +361,7 @@
 		user << "That object is useless to you."
 		return 0
 	user.do_attack_animation(src)
-	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
+	visible_message(SPAN_DANG("[user] [attack_message] the [src]!"))
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	src.health -= damage
 	if (src.health <= 0)

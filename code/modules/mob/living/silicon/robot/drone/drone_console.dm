@@ -19,7 +19,7 @@
 		return
 
 	if(!allowed(user))
-		user << "<span class='danger'>Access denied.</span>"
+		user << SPAN_DANG("Access denied.")
 		return
 
 	user.set_machine(src)
@@ -48,7 +48,7 @@
 		return
 
 	if(!allowed(usr))
-		usr << "<span class='danger'>Access denied.</span>"
+		usr << SPAN_DANG("Access denied.")
 		return
 
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
@@ -77,7 +77,7 @@
 		var/mob/living/silicon/robot/drone/D = locate(href_list["resync"])
 
 		if(D.stat != DEAD)
-			usr << "<span class='danger'>You issue a law synchronization directive for the drone.</span>"
+			usr << SPAN_DANG("You issue a law synchronization directive for the drone.")
 			D.law_resync()
 
 	else if (href_list["shutdown"])
@@ -85,7 +85,7 @@
 		var/mob/living/silicon/robot/drone/D = locate(href_list["shutdown"])
 
 		if(D.stat != DEAD)
-			usr << "<span class='danger'>You issue a kill command for the unfortunate drone.</span>"
+			usr << SPAN_DANG("You issue a kill command for the unfortunate drone.")
 			log_game("[key_name(usr)] issued kill order for [key_name(src)] from control console.", src)
 			D.shut_down()
 
@@ -102,7 +102,7 @@
 			usr << SPAN_NOTE("Drone fabricator located.")
 			return
 
-		usr << "<span class='danger'>Unable to locate drone fabricator.</span>"
+		usr << SPAN_DANG("Unable to locate drone fabricator.")
 
 	else if (href_list["toggle_fab"])
 
@@ -111,7 +111,7 @@
 
 		if(get_dist(src,dronefab) > 3)
 			dronefab = null
-			usr << "<span class='danger'>Unable to locate drone fabricator.</span>"
+			usr << SPAN_DANG("Unable to locate drone fabricator.")
 			return
 
 		dronefab.produce_drones = !dronefab.produce_drones

@@ -20,7 +20,7 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 		if(src:paralysis)
 			src:paralysis = max(0, src:paralysis-round(amount/10))
 	if(amount > 50 && prob(amount / 5))
-		src << "<span class='danger'>It's hurt so much! You drop what you're holding!</span>"
+		src << SPAN_DANG("It's hurt so much! You drop what you're holding!")
 		drop_active_hand()
 	var/msg
 	if(burning)

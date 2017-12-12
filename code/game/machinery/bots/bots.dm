@@ -46,9 +46,9 @@
 	. = ..(user)
 	if (src.health < maxhealth)
 		if (src.health > maxhealth/3)
-			user << "<span class='warning'>[src]'s parts look loose.</span>"
+			user << SPAN_WARN("[src]'s parts look loose.")
 		else
-			user << "<span class='danger'>[src]'s parts look very loose!</span>"
+			user << SPAN_DANG("[src]'s parts look very loose!")
 	return
 
 /obj/machinery/bot/attackby(obj/item/weapon/W as obj, mob/user as mob)

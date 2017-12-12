@@ -104,7 +104,7 @@ for reference:
 				health -= W.force * 0.75
 			else
 		if(health <= 0)
-			visible_message("<span class='danger'>The barricade is smashed apart!</span>")
+			visible_message(SPAN_DANG("The barricade is smashed apart!"))
 			dismantle()
 			qdel(src)
 			return
@@ -118,25 +118,25 @@ for reference:
 /obj/structure/barricade/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			visible_message("<span class='danger'>\The [src] is blown apart!</span>")
+			visible_message(SPAN_DANG("\The [src] is blown apart!"))
 			qdel(src)
 			return
 		if(2.0)
 			health -= 25
 			if(health <= 0)
-				visible_message("<span class='danger'>\The [src] is blown apart!</span>")
+				visible_message(SPAN_DANG("\The [src] is blown apart!"))
 				dismantle()
 			return
 
 /obj/structure/barricade/meteorhit()
-	visible_message("<span class='danger'>\The [src] is smashed apart!</span>")
+	visible_message(SPAN_DANG("\The [src] is smashed apart!"))
 	dismantle()
 	return
 
 /obj/structure/barricade/blob_act()
 	src.health -= 25
 	if (src.health <= 0)
-		visible_message("<span class='danger'>The blob eats through \the [src]!</span>")
+		visible_message(SPAN_DANG("The blob eats through \the [src]!"))
 		qdel(src)
 	return
 
@@ -255,7 +255,7 @@ for reference:
 
 /obj/machinery/deployable/barrier/proc/explode()
 
-	visible_message("<span class='danger'>[src] blows apart!</span>")
+	visible_message(SPAN_DANG("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 /*	var/obj/item/stack/rods/ =*/

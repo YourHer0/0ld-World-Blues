@@ -12,7 +12,7 @@
 	use_power = 1
 	idle_power_usage = 300
 	active_power_usage = 300
-	var/frame = FRAME_COMPUTER
+	var/frame = FRAME_DEFAULT
 	var/processing = 0
 
 	var/light_range_on = 3

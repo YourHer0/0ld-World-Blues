@@ -98,7 +98,7 @@
 				user.visible_message("<span class='warning'>[user] [locked?"locks":"unlocks"] [name] with a multitool.</span>",
 				"<span class='warning'>I [locked?"enable":"disable"] the locking modules.</span>")
 		if(istype(W, /obj/item/weapon/melee/energy/blade))
-			if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [W]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
+			if(emag_act(INFINITY, user, SPAN_DANG("The locker has been sliced open by [user] with \an [W]!"), SPAN_DANG("You hear metal being sliced and sparks flying.")))
 				var/datum/effect/effect/system/spark_spread/spark_system = new()
 				spark_system.set_up(5, 0, src.loc)
 				spark_system.start()
@@ -107,9 +107,15 @@
 		else if(istype(W, /obj/item/weapon/wrench))
 			if(welded)
 				if(anchored)
-					user.visible_message("\The [user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
+					user.visible_message(
+						"\The [user] begins unsecuring \the [src] from the floor.",
+						"You start unsecuring \the [src] from the floor."
+					)
 				else
-					user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
+					user.visible_message(
+						"\The [user] begins securing \the [src] to the floor.",
+						"You start securing \the [src] to the floor."
+					)
 				if(do_after(user, 20))
 					if(!src) return
 					user << SPAN_NOTE("You [anchored? "un" : ""]secured \the [src]!")

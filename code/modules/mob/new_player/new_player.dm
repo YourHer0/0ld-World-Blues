@@ -119,7 +119,7 @@
 					src << SPAN_NOTE("Now teleporting.")
 					observer.loc = O.loc
 				else
-					src << "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>"
+					src << SPAN_DANG("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.")
 				observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
 
 				announce_ghost_joinleave(src)
@@ -145,7 +145,7 @@
 				return
 
 			if(ticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in admin_datums)))
-				usr << "<span class='danger'>[config.hard_popcap_message]</span>"
+				usr << SPAN_DANG("[config.hard_popcap_message]")
 
 				var/queue_position = ticker.queued_players.Find(usr)
 				if(queue_position == 1)
@@ -181,7 +181,7 @@
 				usr << SPAN_NOTE("There is an administrative lock on entering the game!")
 				return
 			else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-				usr << "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>"
+				usr << SPAN_DANG("The station is currently exploding. Joining would go poorly.")
 				return
 
 			if(client.prefs.species != SPECIES_HUMAN)

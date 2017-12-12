@@ -27,7 +27,7 @@
 	if(!plant_controller)
 		sleep(250) // ugly hack, should mean roundstart plants are fine.
 	if(!plant_controller)
-		world << "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>"
+		world << SPAN_DANG("Plant controller does not exist and [src] requires it. Aborting.")
 		qdel(src)
 		return
 
@@ -64,7 +64,7 @@
 	if(!plant_controller)
 		sleep(250) // ugly hack, should mean roundstart plants are fine.
 	if(!plant_controller)
-		world << "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>"
+		world << SPAN_DANG("Plant controller does not exist and [src] requires it. Aborting.")
 		qdel(src)
 		return
 
@@ -261,9 +261,9 @@
 			return hit
 		else
 			if(attack_verb)
-				user.visible_message("<span class='danger'>[M] has been [pick(attack_verb)] with [src] by [user]!</span>")
+				user.visible_message(SPAN_DANG("[M] has been [pick(attack_verb)] with [src] by [user]!"))
 			else
-				user.visible_message("<span class='danger'>[M] has been attacked with [src] by [user]!</span>")
+				user.visible_message(SPAN_DANG("[M] has been attacked with [src] by [user]!"))
 
 			if (hitsound)
 				playsound(loc, hitsound, 50, 1, -1)
@@ -287,7 +287,7 @@
 				return
 			if(prob(35))
 				if(user)
-					user << "<span class='danger'>\The [src] has fallen to bits.</span>"
+					user << SPAN_DANG("\The [src] has fallen to bits.")
 					user.drop_from_inventory(src)
 				qdel(src)
 
@@ -306,7 +306,7 @@
 		return
 
 	if(user.a_intent == I_HURT)
-		user.visible_message("<span class='danger'>\The [user] squashes \the [src]!</span>")
+		user.visible_message(SPAN_DANG("\The [user] squashes \the [src]!"))
 		seed.thrown_at(src,user)
 		sleep(-1)
 		if(src) qdel(src)

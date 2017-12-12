@@ -458,7 +458,7 @@ var/global/datum/controller/occupations/job_master
 				B = locate(/obj/item/storage) in H.contents
 
 			if(isnull(B))
-				H << "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.</span>"
+				H << SPAN_DANG("Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.")
 			else
 				for(var/obj/item/I in put_in_storage)
 					H << SPAN_NOTE("Placing \the [I] in your [B.name]!")

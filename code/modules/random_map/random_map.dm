@@ -58,12 +58,12 @@ var/global/list/random_maps = list()
 	if(seed) rand_seed(seed)
 
 	var/start_time = world.timeofday
-	admin_notice("<span class='danger'>Generating [descriptor].</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("Generating [descriptor]."), R_DEBUG)
 	for(var/i = 0;i<max_attempts;i++)
 		if(generate())
-			admin_notice("<span class='danger'>[capitalize(descriptor)] generation completed in [round(0.1*(world.timeofday-start_time),0.1)] seconds.</span>", R_DEBUG)
+			admin_notice(SPAN_DANG("[capitalize(descriptor)] generation completed in [round(0.1*(world.timeofday-start_time),0.1)] seconds."), R_DEBUG)
 			return
-	admin_notice("<span class='danger'>[capitalize(descriptor)] generation failed in [round(0.1*(world.timeofday-start_time),0.1)] seconds: could not produce sane map.</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("[capitalize(descriptor)] generation failed in [round(0.1*(world.timeofday-start_time),0.1)] seconds: could not produce sane map."), R_DEBUG)
 
 /datum/random_map/proc/within_bounds(var/val)
 	return (val>0) && (val<=raw_map_size)
@@ -169,5 +169,5 @@ var/global/list/random_maps = list()
 	for(var/i = 0, i < max_secret_rooms, i++)
 		if(make_mining_asteroid_secret())
 			rooms_placed++
-	admin_notice("<span class='danger'>Placed [rooms_placed] secrets.</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("Placed [rooms_placed] secrets."), R_DEBUG)
 	return 1

@@ -247,7 +247,7 @@ var/list/global/wall_cache = list()
 		else if(dam <= 0.6)
 			user << "<span class='warning'>It looks moderately damaged.</span>"
 		else
-			user << "<span class='danger'>It looks heavily damaged.</span>"
+			user << SPAN_DANG("It looks heavily damaged.")
 
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		user << "<span class='warning'>There is fungus growing on [src].</span>"
@@ -266,7 +266,7 @@ var/list/global/wall_cache = list()
 		return
 	F.burn_tile()
 	F.icon_state = "wall_thermite"
-	visible_message("<span class='danger'>\The [src] spontaneously combusts!.</span>") //!!OH SHIT!!
+	visible_message(SPAN_DANG("\The [src] spontaneously combusts!.")) //!!OH SHIT!!
 	return
 
 /turf/simulated/wall/proc/take_damage(dam)

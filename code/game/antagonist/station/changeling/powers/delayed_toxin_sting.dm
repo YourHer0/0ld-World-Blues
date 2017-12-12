@@ -22,7 +22,7 @@
 		src.mind.changeling.recursive_enhancement = 0
 	spawn(2 MINUTES)
 		if(T) //We might not exist in two minutes, for whatever reason.
-			T << "<span class='danger'>You feel a burning sensation flowing through your veins!</span>"
+			T << SPAN_DANG("You feel a burning sensation flowing through your veins!")
 			while(i)
 				T.adjustToxLoss(1)
 				i--

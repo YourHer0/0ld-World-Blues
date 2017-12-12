@@ -13,7 +13,7 @@
 
 	if(src.mob)
 		if(jobban_isbanned(src.mob, "AHELP"))
-			src << "<span class='danger'>You have been banned from Adminhelp.</span>"
+			src << SPAN_DANG("You have been banned from Adminhelp.")
 			return
 
 	adminhelped = 1 //Determines if they get the message to reply by clicking the name.

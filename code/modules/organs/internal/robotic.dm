@@ -13,6 +13,6 @@
 	// This is very ghetto way of rebooting an IPC. TODO better way.
 	if(owner && owner.stat == DEAD)
 		owner.stat = 0
-		owner.visible_message("<span class='danger'>\The [owner] twitches visibly!</span>")
+		owner.visible_message(SPAN_DANG("\The [owner] twitches visibly!"))
 
 

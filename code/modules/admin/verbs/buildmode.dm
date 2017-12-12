@@ -317,18 +317,18 @@
 					log_admin("[key_name(usr)] modified [object.name]'s [varholder] to [valueholder]", valueholder, 0)
 					object.vars[varholder] = valueholder
 				else
-					user << "<span class='danger'>[initial(object.name)] does not have a var called '[varholder]'</span>"
+					user << SPAN_DANG("[initial(object.name)] does not have a var called '[varholder]'")
 			else if(pa.Find("right"))
 				if(object.vars.Find(varholder))
 					log_admin("[key_name(usr)] modified [object.name]'s [varholder] to [valueholder]", valueholder, 0)
 					object.vars[varholder] = initial(object.vars[varholder])
 				else
-					user << "<span class='danger'>[initial(object.name)] does not have a var called '[varholder]'</span>"
+					user << SPAN_DANG("[initial(object.name)] does not have a var called '[varholder]'")
 			else if(pa.Find("middle"))
 				if(object.vars.Find(varholder))
 					valueholder = object.vars[varholder]
 				else
-					user << "<span class='danger'>[initial(object.name)] does not have a var called '[varholder]'</span>"
+					user << SPAN_DANG("[initial(object.name)] does not have a var called '[varholder]'")
 		if(4) // Throw
 			if(pa.Find("left"))
 				if(istype(object, /atom/movable))

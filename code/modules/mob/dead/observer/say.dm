@@ -18,7 +18,7 @@
 	//message = sanitize(message) - already sanitized in verb/me_verb()
 	if(!src.client.holder)
 		if(!config.dsay_allowed)
-			src << "<span class='danger'>Deadchat is globally muted.</span>"
+			src << SPAN_DANG("Deadchat is globally muted.")
 			return
 
 	if(client)
@@ -26,7 +26,7 @@
 			src << "\red You cannot emote in deadchat (muted)."
 			return
 		if(!(client.prefs.chat_toggles & CHAT_DEAD))
-			src << "<span class='danger'>You have deadchat muted.</span>"
+			src << SPAN_DANG("You have deadchat muted.")
 			return
 
 	if(!message)

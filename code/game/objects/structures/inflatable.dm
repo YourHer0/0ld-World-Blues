@@ -135,10 +135,10 @@
 	health -= damage
 	user.do_attack_animation(src)
 	if(health <= 0)
-		user.visible_message("<span class='danger'>[user] [attack_verb] open the [src]!</span>")
+		user.visible_message(SPAN_DANG("[user] [attack_verb] open the [src]!"))
 		spawn(1) deflate(1)
 	else
-		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
+		user.visible_message(SPAN_DANG("[user] [attack_verb] at [src]!"))
 	return 1
 
 /obj/structure/inflatable/door //Based on mineral door code

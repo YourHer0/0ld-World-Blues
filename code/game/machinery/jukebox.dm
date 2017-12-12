@@ -154,7 +154,7 @@
 
 /obj/machinery/media/jukebox/proc/explode()
 	walk_to(src,0)
-	src.visible_message("<span class='danger'>\the [src] blows apart!</span>", 1)
+	src.visible_message(SPAN_DANG("\the [src] blows apart!"), 1)
 
 	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
 
@@ -183,7 +183,7 @@
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
-		visible_message("<span class='danger'>\The [src] makes a fizzling sound.</span>")
+		visible_message(SPAN_DANG("\The [src] makes a fizzling sound."))
 		update_icon()
 		return 1
 

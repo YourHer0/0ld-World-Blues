@@ -6,13 +6,13 @@
 		Weaken(3)
 		spin(32,2)
 		visible_message(
-			"<span class='danger'>[src] rolls on the floor, trying to put themselves out!</span>",
+			SPAN_DANG("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTE("You stop, drop, and roll!")
 			)
 		sleep(30)
 		if(fire_stacks <= 0)
 			visible_message(
-				"<span class='danger'>[src] has successfully extinguished themselves!</span>",
+				SPAN_DANG("[src] has successfully extinguished themselves!"),
 				SPAN_NOTE("You extinguish yourself.")
 				)
 			ExtinguishMob()
@@ -48,7 +48,7 @@
 		displaytime = breakouttime / 600 //Minutes
 
 	visible_message(
-		"<span class='danger'>\The [src] attempts to remove \the [HC]!</span>",
+		SPAN_DANG("\The [src] attempts to remove \the [HC]!"),
 		"<span class='warning'>You attempt to remove \the [HC]. (This will take around [displaytime] minutes and you need to stand still)</span>"
 		)
 
@@ -56,7 +56,7 @@
 		if(!handcuffed || buckled)
 			return
 		visible_message(
-			"<span class='danger'>\The [src] manages to remove \the [handcuffed]!</span>",
+			SPAN_DANG("\The [src] manages to remove \the [handcuffed]!"),
 			SPAN_NOTE("You successfully remove \the [handcuffed].")
 			)
 		self_attack_log(src, "remove handcuffs", 1)
@@ -83,7 +83,7 @@
 		displaytime = breakouttime / 600 //Minutes
 
 	visible_message(
-		"<span class='danger'>[usr] attempts to remove \the [HC]!</span>",
+		SPAN_DANG("[usr] attempts to remove \the [HC]!"),
 		"<span class='warning'>You attempt to remove \the [HC]. (This will take around [displaytime] minutes and you need to stand still)</span>"
 		)
 
@@ -91,7 +91,7 @@
 		if(!legcuffed || buckled)
 			return
 		visible_message(
-			"<span class='danger'>[src] manages to remove \the [legcuffed]!</span>",
+			SPAN_DANG("[src] manages to remove \the [legcuffed]!"),
 			SPAN_NOTE("You successfully remove \the [legcuffed].")
 			)
 
@@ -108,7 +108,7 @@
 
 /mob/living/carbon/proc/break_handcuffs()
 	visible_message(
-		"<span class='danger'>[src] is trying to break \the [handcuffed]!</span>",
+		SPAN_DANG("[src] is trying to break \the [handcuffed]!"),
 		"<span class='warning'>You attempt to break your [handcuffed.name]. (This will take around 5 seconds and you need to stand still)</span>"
 		)
 
@@ -119,7 +119,7 @@
 		self_attack_log(src, "break self handcuffs", 1)
 
 		visible_message(
-			"<span class='danger'>[src] manages to break \the [handcuffed]!</span>",
+			SPAN_DANG("[src] manages to break \the [handcuffed]!"),
 			"<span class='warning'>You successfully break your [handcuffed.name].</span>"
 			)
 
@@ -133,14 +133,14 @@
 
 /mob/living/carbon/proc/break_legcuffs()
 	src << "<span class='warning'>You attempt to break your legcuffs. (This will take around 5 seconds and you need to stand still)</span>"
-	visible_message("<span class='danger'>[src] is trying to break the legcuffs!</span>")
+	visible_message(SPAN_DANG("[src] is trying to break the legcuffs!"))
 
 	if(do_after(src, 50))
 		if(!legcuffed || buckled)
 			return
 
 		visible_message(
-			"<span class='danger'>[src] manages to break the legcuffs!</span>",
+			SPAN_DANG("[src] manages to break the legcuffs!"),
 			"<span class='warning'>You successfully break your legcuffs.</span>"
 			)
 
@@ -163,13 +163,15 @@
 		..()
 	else
 		visible_message(
-			"<span class='danger'>[usr] attempts to unbuckle themself!</span>",
+			SPAN_DANG("[usr] attempts to unbuckle themself!"),
 			"<span class='warning'>You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)</span>"
 			)
 
 		if(do_after(usr, 1200))
 			if(!buckled)
 				return
-			visible_message("<span class='danger'>[usr] manages to unbuckle themself!</span>",
-							SPAN_NOTE("You successfully unbuckle yourself."))
+			visible_message(
+				SPAN_DANG("[usr] manages to unbuckle themself!"),
+				SPAN_NOTE("You successfully unbuckle yourself.")
+			)
 			buckled.user_unbuckle_mob(src)

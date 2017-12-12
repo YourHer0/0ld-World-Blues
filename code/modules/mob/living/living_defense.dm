@@ -197,7 +197,7 @@
 		"was attacked by [key_name(user)]",
 		"attacked"
 	)
-	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
+	src.visible_message(SPAN_DANG("[user] has [attack_message] [src]!"))
 	user.do_attack_animation(src)
 	spawn(1) updatehealth()
 	return 1

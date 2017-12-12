@@ -15,7 +15,7 @@
 	attack_verb = list("banned")
 
 	suicide_act(mob/user)
-		viewers(user) << "<span class='danger'>[user] is hitting \himself with the [src.name]! It looks like \he's trying to ban \himself from life.</span>"
+		viewers(user) << SPAN_DANG("[user] is hitting \himself with the [src.name]! It looks like \he's trying to ban \himself from life.")
 		return (BRUTELOSS|FIRELOSS|TOXLOSS|OXYLOSS)
 
 /obj/item/weapon/nullrod
@@ -31,7 +31,7 @@
 	w_class = ITEM_SIZE_SMALL
 
 	suicide_act(mob/user)
-		viewers(user) << "<span class='danger'>[user] is impaling \himself with the [src.name]! It looks like \he's trying to commit suicide.</span>"
+		viewers(user) << SPAN_DANG("[user] is impaling \himself with the [src.name]! It looks like \he's trying to commit suicide.")
 		return (BRUTELOSS|FIRELOSS)
 
 /obj/item/weapon/nullrod/attack(mob/M as mob, mob/living/user as mob) //Paste from old-code to decult with a null rod.
@@ -48,7 +48,7 @@
 	//TODO: DNA3 clown_block
 	/*
 	if ((CLUMSY in user.mutations) && prob(50))
-		user << "<span class='danger'>The rod slips out of your hand and hits your head.</span>"
+		user << SPAN_DANG("The rod slips out of your hand and hits your head.")
 		user.take_organ_damage(10)
 		user.Paralyse(20)
 		return
@@ -56,16 +56,16 @@
 
 	if (M.stat !=DEAD)
 		if(cult && (M.mind in cult.current_antagonists) && prob(33))
-			M << "<span class='danger'>The power of [src] clears your mind of the cult's influence!</span>"
-			user << "<span class='danger'>You wave [src] over [M]'s head and see their eyes become clear, their mind returning to normal.</span>"
+			M << SPAN_DANG("The power of [src] clears your mind of the cult's influence!")
+			user << SPAN_DANG("You wave [src] over [M]'s head and see their eyes become clear, their mind returning to normal.")
 			cult.remove_antagonist(M.mind)
-			M.visible_message("<span class='danger'>\The [user] waves \the [src] over \the [M]'s head.</span>")
+			M.visible_message(SPAN_DANG("\The [user] waves \the [src] over \the [M]'s head."))
 		else if(prob(10))
-			user << "<span class='danger'>The rod slips in your hand.</span>"
+			user << SPAN_DANG("The rod slips in your hand.")
 			..()
 		else
-			user << "<span class='danger'>The rod appears to do nothing.</span>"
-			M.visible_message("<span class='danger'>\The [user] waves \the [src] over \the [M]'s head.</span>")
+			user << SPAN_DANG("The rod appears to do nothing.")
+			M.visible_message(SPAN_DANG("\The [user] waves \the [src] over \the [M]'s head."))
 			return
 
 /obj/item/weapon/nullrod/afterattack(atom/A, mob/user as mob, proximity)
@@ -89,7 +89,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 	suicide_act(mob/user)
-		viewers(user) << "<span class='danger'>[user] is impaling \himself with the [src.name]! It looks like \he's trying to commit suicide.</span>"
+		viewers(user) << SPAN_DANG("[user] is impaling \himself with the [src.name]! It looks like \he's trying to commit suicide.")
 		return(BRUTELOSS)
 
 /obj/item/weapon/sord/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
@@ -241,7 +241,7 @@
 	else
 		health -= rand(5,8)
 
-	H << "<span class='danger'>You claw at the energy net.</span>"
+	H << SPAN_DANG("You claw at the energy net.")
 
 	healthcheck()
 	return

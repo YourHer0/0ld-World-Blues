@@ -62,7 +62,7 @@
 /obj/item/weapon/material/shard/Crossed(AM as mob|obj)
 	if(isliving(AM))
 		var/mob/M = AM
-		M << "<span class='danger'>You step on \the [src]!</span>"
+		M << SPAN_DANG("You step on \the [src]!")
 		playsound(src.loc, 'sound/effects/glass_step.ogg', 50, 1) // not sure how to handle metal shards with sounds
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M

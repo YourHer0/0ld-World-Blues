@@ -159,29 +159,32 @@
 		precision = max(rand(1,100)*bagholding.len,100)
 		if(isliving(teleatom))
 			var/mob/living/MM = teleatom
-			MM << "<span class='danger'>The Bluespace interface on your [teleatom] interferes with the teleport!</span>"
+			MM << SPAN_DANG("The Bluespace interface on your [teleatom] interferes with the teleport!")
 	return 1
 
 /datum/teleport/instant/science/teleportChecks()
 	if(istype(teleatom, /obj/item/weapon/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
-		teleatom.visible_message("<span class='danger'>\The [teleatom] bounces off of the portal!</span>")
+		teleatom.visible_message(SPAN_DANG("\The [teleatom] bounces off of the portal!"))
 		return 0
 
 	if(!isemptylist(teleatom.search_contents_for(/obj/item/weapon/disk/nuclear)))
 		if(isliving(teleatom))
 			var/mob/living/MM = teleatom
-			MM.visible_message("<span class='danger'>\The [MM] bounces off of the portal!</span>","<span class='warning'>Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through.</span>")
+			MM.visible_message(
+				SPAN_DANG("\The [MM] bounces off of the portal!"),
+				SPAN_WARN("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through.")
+			)
 		else
-			teleatom.visible_message("<span class='danger'>\The [teleatom] bounces off of the portal!</span>")
+			teleatom.visible_message(SPAN_DANG("\The [teleatom] bounces off of the portal!"))
 		return 0
 
 	if(isOnAdminLevel(destination)) //centcomm z-level
 		if(istype(teleatom, /obj/mecha))
 			var/obj/mecha/MM = teleatom
-			MM.occupant << "<span class='danger'>\The [MM] would not survive the jump to a location so far away!</span>"
+			MM.occupant << SPAN_DANG("\The [MM] would not survive the jump to a location so far away!")
 			return 0
 		if(!isemptylist(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
-			teleatom.visible_message("<span class='danger'>\The [teleatom] bounces off of the portal!</span>")
+			teleatom.visible_message(SPAN_DANG("\The [teleatom] bounces off of the portal!"))
 			return 0
 
 

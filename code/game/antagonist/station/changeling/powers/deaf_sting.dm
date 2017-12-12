@@ -19,7 +19,7 @@
 		duration = duration + 100
 		src << SPAN_NOTE("They will be unable to hear for a little longer.")
 		src.mind.changeling.recursive_enhancement = 0
-	T << "<span class='danger'>Your ears pop and begin ringing loudly!</span>"
+	T << SPAN_DANG("Your ears pop and begin ringing loudly!")
 	T.sdisabilities |= DEAF
 	spawn(duration)	T.sdisabilities &= ~DEAF
 	return 1

@@ -113,7 +113,7 @@
 	else
 		if(user.a_intent == I_HURT)
 			usr.visible_message(
-				"<span class='danger'>[user] draws \the [holstered], ready to shoot!</span>",
+				SPAN_DANG("[user] draws \the [holstered], ready to shoot!"),
 				"<span class='warning'>You draw \the [holstered], ready to shoot!</span>"
 				)
 		else
@@ -171,7 +171,7 @@
 		user << "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>"
 	else
 		user.visible_message(
-			"<span class='danger'>[user] draws \the [holstered]!</span>",
+			SPAN_DANG("[user] draws \the [holstered]!"),
 			"<span class='warning'>You draw \the [holstered]!</span>"
 			)
 		return ..()

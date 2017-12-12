@@ -54,7 +54,7 @@
 /obj/item/weapon/gun/energy/floragun/afterattack(obj/target, mob/user, adjacent_flag)
 	//allow shooting into adjacent hydrotrays regardless of intent
 	if(adjacent_flag && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
-		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
+		user.visible_message(SPAN_DANG("\The [user] fires \the [src] into \the [target]!"))
 		Fire(target,user)
 		return
 	..()
@@ -141,7 +141,7 @@
 
 /obj/item/weapon/gun/energy/staff/handle_click_empty(mob/user = null)
 	if (user)
-		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
+		user.visible_message("*fizzle*", SPAN_DANG("*fizzle*"))
 	else
 		src.visible_message("*fizzle*")
 	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)

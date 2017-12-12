@@ -12,6 +12,6 @@
 	var/mob/living/carbon/T = changeling_sting(30,/mob/living/proc/changeling_paralysis_sting)
 	if(!T)
 		return 0
-	T << "<span class='danger'>Your muscles begin to painfully tighten.</span>"
+	T << SPAN_DANG("Your muscles begin to painfully tighten.")
 	T.Weaken(20)
 	return 1

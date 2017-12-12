@@ -158,10 +158,10 @@
 			if(istype(H))
 				var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 				if(!affected)
-					user << "<span class='danger'>\The [H] is missing that limb!</span>"
+					user << SPAN_DANG("\The [H] is missing that limb!")
 					return
 				else if(affected.robotic >= ORGAN_ROBOT)
-					user << "<span class='danger'>You cannot inject a robotic limb.</span>"
+					user << SPAN_DANG("You cannot inject a robotic limb.")
 					return
 
 			if(ismob(target) && target != user)
@@ -243,7 +243,7 @@
 		var/obj/item/organ/external/affecting = H.get_organ(target_zone)
 
 		if (!affecting || affecting.is_stump())
-			user << "<span class='danger'>They are missing that limb!</span>"
+			user << SPAN_DANG("They are missing that limb!")
 			return
 
 		var/hit_area = affecting.name
@@ -265,13 +265,13 @@
 
 			return
 
-		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
+		user.visible_message(SPAN_DANG("[user] stabs [target] in \the [hit_area] with [src.name]!"))
 
 		if(affecting.take_damage(3))
 			H.UpdateDamageIcon()
 
 	else
-		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
+		user.visible_message(SPAN_DANG("[user] stabs [target] with [src.name]!"))
 		target.take_organ_damage(3)// 7 is the same as crowbar punch
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand

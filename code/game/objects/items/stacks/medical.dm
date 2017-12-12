@@ -198,46 +198,46 @@
 
 	var/limb = affecting.name
 	if(!(affecting.organ_tag in list(BP_L_ARM,BP_R_ARM,BP_L_LEG,BP_R_LEG)))
-		user << "<span class='danger'>You can't apply a splint there!</span>"
+		user << SPAN_DANG("You can't apply a splint there!")
 		return
 
 	if(affecting.status & ORGAN_SPLINTED)
-		user << "<span class='danger'>[H]'s [limb] is already splinted!</span>"
+		user << SPAN_DANG("[H]'s [limb] is already splinted!")
 		return
 	if (H != user)
 		user.visible_message(
-			"<span class='danger'>[user] starts to apply \the [src] to [H]'s [limb].</span>",
-			"<span class='danger'>You start to apply \the [src] to [H]'s [limb].</span>",
-			"<span class='danger'>You hear something being wrapped.</span>"
+			SPAN_DANG("[user] starts to apply \the [src] to [H]'s [limb]."),
+			SPAN_DANG("You start to apply \the [src] to [H]'s [limb]."),
+			SPAN_DANG("You hear something being wrapped.")
 		)
 	else
 		if((!user.hand && affecting.organ_tag == BP_R_ARM) || (user.hand && affecting.organ_tag == BP_L_ARM))
-			user << "<span class='danger'>You can't apply a splint to the arm you're using!</span>"
+			user << SPAN_DANG("You can't apply a splint to the arm you're using!")
 			return
 		user.visible_message(
-			"<span class='danger'>[user] starts to apply \the [src] to their [limb].</span>",
-			"<span class='danger'>You start to apply \the [src] to your [limb].</span>",
-			"<span class='danger'>You hear something being wrapped.</span>"
+			SPAN_DANG("[user] starts to apply \the [src] to their [limb]."),
+			SPAN_DANG("You start to apply \the [src] to your [limb]."),
+			SPAN_DANG("You hear something being wrapped.")
 		)
 	if(do_mob(user, H, 50))
 		if (H != user)
 			user.visible_message(
-				"<span class='danger'>[user] finishes applying \the [src] to [H]'s [limb].</span>",
-				"<span class='danger'>You finish applying \the [src] to [H]'s [limb].</span>",
-				"<span class='danger'>You hear something being wrapped.</span>"
+				SPAN_DANG("[user] finishes applying \the [src] to [H]'s [limb]."),
+				SPAN_DANG("You finish applying \the [src] to [H]'s [limb]."),
+				SPAN_DANG("You hear something being wrapped.")
 			)
 		else
 			if(prob(25))
 				user.visible_message(
-					"<span class='danger'>[user] successfully applies \the [src] to their [limb].</span>",
-					"<span class='danger'>You successfully apply \the [src] to your [limb].</span>",
-					"<span class='danger'>You hear something being wrapped.</span>"
+					SPAN_DANG("[user] successfully applies \the [src] to their [limb]."),
+					SPAN_DANG("You successfully apply \the [src] to your [limb]."),
+					SPAN_DANG("You hear something being wrapped.")
 				)
 			else
 				user.visible_message(
-					"<span class='danger'>[user] fumbles \the [src].</span>",
-					"<span class='danger'>You fumble \the [src].</span>",
-					"<span class='danger'>You hear something being wrapped.</span>"
+					SPAN_DANG("[user] fumbles \the [src]."),
+					SPAN_DANG("You fumble \the [src]."),
+					SPAN_DANG("You hear something being wrapped.")
 				)
 				return
 		affecting.status |= ORGAN_SPLINTED

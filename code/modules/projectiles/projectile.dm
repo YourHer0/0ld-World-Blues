@@ -179,14 +179,14 @@
 	//hit messages
 	if(silenced)
 		if(ishuman(target_mob))
-			target_mob << "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>"
+			target_mob << SPAN_DANG("You've been hit in the [parse_zone(def_zone)] by \the [src]!")
 		else
-			target_mob << "<span class='danger'>You've been hit by \the [src]!</span>"
+			target_mob << SPAN_DANG("You've been hit by \the [src]!")
 	else
 		if(ishuman(target_mob))
-			visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")
+			visible_message(SPAN_DANG("\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!"))
 		else
-			visible_message("<span class='danger'>\The [target_mob] is hit by \the [src]!</span>")
+			visible_message(SPAN_DANG("\The [target_mob] is hit by \the [src]!"))
 
 	//admin logs
 	if(!no_attack_log)
@@ -230,7 +230,7 @@
 			//if they have a neck grab on someone, that person gets hit instead
 			var/obj/item/weapon/grab/G = locate() in M
 			if(G && G.state >= GRAB_NECK && G.affecting.loc == M.loc)
-				visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
+				visible_message(SPAN_DANG("\The [M] uses [G.affecting] as a shield!"))
 				if(Bump(G.affecting, forced=1))
 					return //If Bump() returns 0 (keep going) then we continue on to attack M.
 

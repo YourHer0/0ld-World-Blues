@@ -24,8 +24,10 @@
 /spell/targeted/equip_item/horsemask/cast(list/targets, mob/user = usr)
 	..()
 	for(var/mob/living/target in targets)
-		target.visible_message(	"<span class='danger'>[target]'s face  lights up in fire, and after the event a horse's head takes its place!</span>", \
-								"<span class='danger'>Your face burns up, and shortly after the fire you realise you have the face of a horse!</span>")
+		target.visible_message(
+			SPAN_DANG("[target]'s face  lights up in fire, and after the event a horse's head takes its place!"),
+			SPAN_DANG("Your face burns up, and shortly after the fire you realise you have the face of a horse!")
+		)
 		flick("e_flash", target.flash)
 
 /spell/targeted/equip_item/horsemask/summon_item(var/new_type)

@@ -75,18 +75,18 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
-		user << "<span class='danger'>The gibber is locked and running, wait for it to finish.</span>"
+		user << SPAN_DANG("The gibber is locked and running, wait for it to finish.")
 		return
 	else
 		src.startgibbing(user)
 
 /obj/machinery/gibber/examine()
 	. = ..()
-	usr << "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"]."
+	usr << "The safety guard is [emagged ? SPAN_DANG("disabled") : "enabled"]."
 
 /obj/machinery/gibber/emag_act(var/remaining_charges, var/mob/user)
 	emagged = !emagged
-	user << "<span class='danger'>You [emagged ? "disable" : "enable"] the gibber safety guard.</span>"
+	user << SPAN_DANG("You [emagged ? "disable" : "enable"] the gibber safety guard.")
 	return 1
 
 /obj/machinery/gibber/affect_grab(var/mob/user, var/mob/target, var/state)
@@ -100,7 +100,7 @@
 	if(W.GetID())
 		if(allowed(usr))
 			emagged = !emagged
-			usr << "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"]."
+			usr << "The safety guard is [emagged ? SPAN_DANG("disabled") : "enabled"]."
 	else
 		..()
 
@@ -170,7 +170,7 @@
 	if(src.operating)
 		return
 	if(!src.occupant)
-		visible_message("<span class='danger'>You hear a loud metallic grinding sound.</span>")
+		visible_message(SPAN_DANG("You hear a loud metallic grinding sound."))
 		return
 	use_power(1000)
 	visible_message(SPAN_DANG("You hear a loud [occupant.isSynthetic() ? "metallic" : "squelchy"] grinding sound."))

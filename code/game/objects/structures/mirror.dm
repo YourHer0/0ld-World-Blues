@@ -63,7 +63,7 @@
 		user.visible_message("<span class='danger'>[user] smashes [src]!")
 		shatter()
 	else
-		user.visible_message("<span class='danger'>[user] hits [src] and bounces off!</span>")
+		user.visible_message(SPAN_DANG("[user] hits [src] and bounces off!"))
 	return 1
 
 // The following mirror is ~special~.

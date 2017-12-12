@@ -94,11 +94,11 @@
 	set desc = "If there is a powered, enabled fabricator in the game world with a prepared chassis, join as a maintenance drone."
 
 	if(ticker.current_state < GAME_STATE_PLAYING)
-		src << "<span class='danger'>The game hasn't started yet!</span>"
+		src << SPAN_DANG("The game hasn't started yet!")
 		return
 
 	if(!(config.allow_drone_spawn))
-		src << "<span class='danger'>That verb is not currently permitted.</span>"
+		src << SPAN_DANG("That verb is not currently permitted.")
 		return
 
 	if (!src.stat)
@@ -108,7 +108,7 @@
 		return 0 //something is terribly wrong
 
 	if(jobban_isbanned(src,"Cyborg") || jobban_isbanned(src,"Drone"))
-		usr << "<span class='danger'>You are banned from playing synthetics and cannot spawn as a drone.</span>"
+		usr << SPAN_DANG("You are banned from playing synthetics and cannot spawn as a drone.")
 		return
 
 	if(!MayRespawn(1, 10))
@@ -122,7 +122,7 @@
 			all_fabricators[DF.fabricator_tag] = DF
 
 	if(!all_fabricators.len)
-		src << "<span class='danger'>There are no available drone spawn points, sorry.</span>"
+		src << SPAN_DANG("There are no available drone spawn points, sorry.")
 		return
 
 	var/choice = input(src,"Which fabricator do you wish to use?") as null|anything in all_fabricators

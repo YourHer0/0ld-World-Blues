@@ -37,7 +37,7 @@
 			owner.vomit()
 	if(inflamed > 3)
 		if(prob(1))
-			owner << "<span class='danger'>Your abdomen is a world of pain!</span>"
+			owner << SPAN_DANG("Your abdomen is a world of pain!")
 			owner.Weaken(10)
 
 			var/obj/item/organ/external/groin = owner.get_organ(BP_GROIN)

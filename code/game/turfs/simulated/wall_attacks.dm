@@ -32,11 +32,11 @@
 	update_icon()
 
 /turf/simulated/wall/proc/fail_smash(var/mob/user)
-	user << "<span class='danger'>You smash against the wall!</span>"
+	user << SPAN_DANG("You smash against the wall!")
 	take_damage(rand(25,75))
 
 /turf/simulated/wall/proc/success_smash(var/mob/user)
-	user << "<span class='danger'>You smash through the wall!</span>"
+	user << SPAN_DANG("You smash through the wall!")
 	user.do_attack_animation(src)
 	spawn(1)
 		dismantle_wall(1)
@@ -45,9 +45,9 @@
 
 	if(rotting)
 		if(reinf_material)
-			user << "<span class='danger'>\The [reinf_material.display_name] feels porous and crumbly.</span>"
+			user << SPAN_DANG("\The [reinf_material.display_name] feels porous and crumbly.")
 		else
-			user << "<span class='danger'>\The [material.display_name] crumbles under your touch!</span>"
+			user << SPAN_DANG("\The [material.display_name] crumbles under your touch!")
 			dismantle_wall()
 			return 1
 

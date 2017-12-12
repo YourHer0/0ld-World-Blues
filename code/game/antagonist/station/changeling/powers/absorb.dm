@@ -49,9 +49,11 @@
 				src.visible_message("<span class='warning'>[src] extends a proboscis!</span>",\
 				SPAN_NOTE("We extend a proboscis."))
 			if(3)
-				src.visible_message("<span class='danger'>[src] stabs [T] with the proboscis!</span>",\
-				SPAN_NOTE("We stab [T] with the proboscis."))
-				T << "<span class='danger'>You feel a sharp stabbing pain!</span>"
+				src.visible_message(
+					SPAN_DANG("[src] stabs [T] with the proboscis!"),
+					SPAN_NOTE("We stab [T] with the proboscis.")
+				)
+				T << SPAN_DANG("You feel a sharp stabbing pain!")
 				T.attack_log += text("\[[time_stamp()]\] <font color='red'>Was absorbed by [key_name(src)]</font>")
 				src.attack_log += text("\[[time_stamp()]\] <font color='orange'> Absorbed [key_name(T)]</font>")
 				msg_admin_attack("[key_name(T)] was absorbed by [key_name(src)]", T)
@@ -64,9 +66,11 @@
 			changeling.isabsorbing = 0
 			return
 
-	src.visible_message("<span class='danger'>[src] sucks the fluids from [T]!</span>",\
-	 SPAN_NOTE("We have absorbed [T]!"))
-	T << "<span class='danger'>You have been absorbed by the changeling!</span>"
+	src.visible_message(
+		SPAN_DANG("[src] sucks the fluids from [T]!"),
+		SPAN_NOTE("We have absorbed [T]!")
+	)
+	T << SPAN_DANG("You have been absorbed by the changeling!")
 	if(src.nutrition < 400)
 		src.nutrition = min((src.nutrition + T.nutrition), 400)
 	changeling.chem_charges += 10

@@ -82,7 +82,7 @@ var/global/list/ashtray_cache = list()
 	if (health > 0)
 		health = max(0,health - 3)
 		if (contents.len)
-			src.visible_message("<span class='danger'>\The [src] slams into [hit_atom], spilling its contents!</span>")
+			src.visible_message(SPAN_DANG("\The [src] slams into [hit_atom], spilling its contents!"))
 		for (var/obj/item/clothing/mask/smokable/cigarette/O in contents)
 			O.loc = src.loc
 		if (health < 1)
@@ -98,7 +98,7 @@ var/global/list/ashtray_cache = list()
 		user.visible_message("[user] empties \the [src]!")
 		update_icon()
 	else
-		user << "<span class='danger'>\The [src] is empty!</span>"
+		user << SPAN_DANG("\The [src] is empty!")
 
 /obj/item/weapon/material/ashtray/plastic/New(var/newloc)
 	..(newloc, MATERIAL_PLASTIC)

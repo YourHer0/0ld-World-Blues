@@ -33,7 +33,7 @@
 	// Handle only adding a mind and not bothering with gear etc.
 	if(nonstandard_role_type)
 		faction_members |= player
-		player.current << "<span class='danger'><font size=3>You are \a [nonstandard_role_type]!</span>"
+		player.current << SPAN_DANG("<font size=3>You are \a [nonstandard_role_type]!")
 		player.special_role = nonstandard_role_type
 		if(nonstandard_role_msg)
 			player.current << SPAN_NOTE(nonstandard_role_msg)
@@ -44,7 +44,7 @@
 	if(player.current && faction_verb)
 		player.current.verbs -= faction_verb
 	if(player in current_antagonists)
-		player.current << "<span class='danger'><font size = 3>You are no longer a [role_text]!</font></span>"
+		player.current << SPAN_DANG("<font size = 3>You are no longer a [role_text]!</font>")
 		current_antagonists -= player
 		faction_members -= player
 		player.special_role = null

@@ -1062,7 +1062,7 @@
 	if(src.pulse)
 		usr << SPAN_NOTE("[self ? "You have a" : "[src] has a"] pulse! Counting...")
 	else
-		usr << "<span class='danger'>[src] has no pulse!</span>"	//it is REALLY UNLIKELY that a dead person would check his own pulse
+		usr << SPAN_DANG("[src] has no pulse!")	//it is REALLY UNLIKELY that a dead person would check his own pulse
 		return
 
 	usr << "You must[self ? "" : " both"] remain still until counting is finished."
@@ -1407,10 +1407,10 @@
 		return
 
 	if(self)
-		src << "<span class='danger'>You pop your [current_limb.joint] back in!</span>"
+		src << SPAN_DANG("You pop your [current_limb.joint] back in!")
 	else
-		U << "<span class='danger'>You pop [S]'s [current_limb.joint] back in!</span>"
-		S << "<span class='danger'>[U] pops your [current_limb.joint] back in!</span>"
+		U << SPAN_DANG("You pop [S]'s [current_limb.joint] back in!")
+		S << SPAN_DANG("[U] pops your [current_limb.joint] back in!")
 	current_limb.undislocate()
 
 /mob/living/carbon/human/verb/manage_hidden_slost()

@@ -24,7 +24,7 @@ item/resolve_attackby() calls the target atom's attackby() proc.
 
 /atom/movable/attackby(obj/item/W, mob/user)
 	if(!(W.flags & NOBLUDGEON))
-		visible_message("<span class='danger'>[src] has been hit by [user] with [W].</span>")
+		visible_message(SPAN_DANG("[src] has been hit by [user] with [W]."))
 
 /mob/living/attackby(obj/item/I, mob/user)
 	if(!ismob(user))
@@ -57,7 +57,7 @@ item/resolve_attackby() calls the target atom's attackby() proc.
 				M.adjustOxyLoss(60) // Brain lacks oxygen immediately, pass out
 				flick(G.hud.icon_state, G.hud)
 				G.last_action = world.time
-				user.visible_message("<span class='danger'>[user] slit [M]'s throat open with \the [name]!</span>")
+				user.visible_message(SPAN_DANG("[user] slit [M]'s throat open with \the [name]!"))
 				admin_attack_log(user, M,
 					"Knifed [key_name(M)] with [name]",
 					"Got knifed by [key_name(user)] with [name]",
@@ -96,14 +96,15 @@ item/resolve_attackby() calls the target atom's attackby() proc.
 		if(H.attacked_by(src, user, target_zone) && hitsound)
 			playsound(loc, hitsound, 50, 1, -1)
 			spawn(1) //ugh I hate this but I don't want to root through human attack procs to print it after this call resolves.
-				if(dislocation_str) user.visible_message("<span class='danger'>[dislocation_str]</span>")
+				if(dislocation_str)
+					user.visible_message(SPAN_DANG("[dislocation_str]"))
 			return 1
 		return 0
 	else
 		if(attack_verb)
-			user.visible_message("<span class='danger'>[M] has been [pick(attack_verb)] with [src] by [user]!</span>")
+			user.visible_message(SPAN_DANG("[M] has been [pick(attack_verb)] with [src] by [user]!"))
 		else
-			user.visible_message("<span class='danger'>[M] has been attacked with [src] by [user]!</span>")
+			user.visible_message(SPAN_DANG("[M] has been attacked with [src] by [user]!"))
 
 		if (hitsound)
 			playsound(loc, hitsound, 50, 1, -1)

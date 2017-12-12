@@ -642,9 +642,11 @@
 				&& W.w_class >= 3.0 \
 				&& prob(20) )
 			opened = 2
-			user.visible_message("<span class='danger'>The APC cover was knocked down with the [W.name] by [user.name]!</span>", \
-				"<span class='danger'>You knock down the APC cover with your [W.name]!</span>", \
-				"You hear bang")
+			user.visible_message(
+				SPAN_DANG("The APC cover was knocked down with the [W.name] by [user.name]!"),
+				SPAN_DANG("You knock down the APC cover with your [W.name]!"),
+				"You hear bang"
+			)
 			update_icon()
 		else
 			if (issilicon(user))
@@ -653,9 +655,11 @@
 				(istype(W, /obj/item/device/multitool) || \
 				istype(W, /obj/item/weapon/wirecutters) || istype(W, /obj/item/device/assembly/signaler)))
 				return src.attack_hand(user)
-			user.visible_message("<span class='danger'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
-				"<span class='danger'>You hit the [src.name] with your [W.name]!</span>", \
-				"You hear bang")
+			user.visible_message(
+				SPAN_DANG("The [src.name] has been hit with the [W.name] by [user.name]!"), \
+				SPAN_DANG("You hit the [src.name] with your [W.name]!"), \
+				"You hear bang"
+			)
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 
@@ -889,7 +893,7 @@
 
 		if(aidisabled && !permit)
 			if(!loud)
-				user << "<span class='danger'>\The [src] have AI control disabled!</span>"
+				user << SPAN_DANG("\The [src] have AI control disabled!")
 			return 0
 	else
 		if ((!in_range(src, user) || !istype(src.loc, /turf) || hacker)) // AI-hacked APCs cannot be controlled by other AIs, unlinked cyborgs or humans.
@@ -897,10 +901,10 @@
 	var/mob/living/carbon/human/H = user
 	if (istype(H))
 		if(H.getBrainLoss() >= 60)
-			H.visible_message("<span class='danger'>[H] stares cluelessly at [src] and drools.</span>")
+			H.visible_message(SPAN_DANG("[H] stares cluelessly at [src] and drools."))
 			return 0
 		else if(prob(H.getBrainLoss()))
-			user << "<span class='danger'>You momentarily forget how to use [src].</span>"
+			user << SPAN_DANG("You momentarily forget how to use [src].")
 			return 0
 	return 1
 
@@ -984,8 +988,10 @@
 			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
-			visible_message("<span class='danger'>The [src.name] suddenly lets out a blast of smoke and some sparks!</span>", \
-							"<span class='danger'>You hear sizzling electronics.</span>")
+			visible_message(
+				SPAN_DANG("The [src.name] suddenly lets out a blast of smoke and some sparks!"),
+				SPAN_DANG("You hear sizzling electronics.")
+			)
 
 
 /obj/machinery/power/apc/surplus()

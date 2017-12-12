@@ -83,7 +83,7 @@
 		return
 
 	if(istype(H.gloves,/obj/item/clothing/gloves/rig)) // Can't cuff someone who's in a deployed hardsuit.
-		user << "<span class='danger'>The cuffs won't fit around \the [H.gloves]!</span>"
+		user << SPAN_DANG("The cuffs won't fit around \the [H.gloves]!")
 		return
 
 	user.visible_message(SPAN_DANG("\The [user] is attempting to put [cuff_type] on \the [H]!"))
@@ -100,7 +100,7 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(H)
 
-	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
+	user.visible_message(SPAN_DANG("\The [user] has put [cuff_type] on \the [H]!"))
 
 	// Apply cuffs.
 	var/obj/item/weapon/handcuffs/cuffs = src

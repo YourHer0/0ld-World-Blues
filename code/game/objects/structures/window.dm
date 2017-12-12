@@ -32,7 +32,7 @@
 		else if(perc > 0.25)
 			user << "<span class='warning'>It looks moderately damaged.</span>"
 		else
-			user << "<span class='danger'>It looks heavily damaged.</span>"
+			user << SPAN_DANG("It looks heavily damaged.")
 	if(silicate)
 		if (silicate < 30)
 			user << SPAN_NOTE("It has a thin layer of silicate.")
@@ -157,7 +157,7 @@
 
 /obj/structure/window/hitby(AM as mob|obj)
 	..()
-	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
+	visible_message(SPAN_DANG("[src] was hit by [AM]."))
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
@@ -183,7 +183,7 @@
 	/*
 	if(HULK in user.mutations)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
-		user.visible_message("<span class='danger'>[user] smashes through [src]!</span>")
+		user.visible_message(SPAN_DANG("[user] smashes through [src]!"))
 		user.do_attack_animation(src)
 		shatter()
 		return
@@ -199,8 +199,8 @@
 		playsound(src.loc, 'sound/effects/glassknock.ogg', 80, 1)
 		user.do_attack_animation(src)
 		usr.visible_message(
-			"<span class='danger'>\The [usr] bangs against \the [src]!</span>",
-			"<span class='danger'>You bang against \the [src]!</span>",
+			SPAN_DANG("\The [usr] bangs against \the [src]!"),
+			SPAN_DANG("You bang against \the [src]!"),
 			"You hear a banging sound."
 		)
 	else
@@ -216,7 +216,7 @@
 	if(!damage)
 		return
 	if(damage >= 10)
-		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
+		visible_message(SPAN_DANG("[user] smashes into [src]!"))
 		take_damage(damage)
 	else
 		visible_message(SPAN_NOTE("\The [user] bonks \the [src] harmlessly."))

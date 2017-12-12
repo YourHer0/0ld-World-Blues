@@ -37,7 +37,10 @@
 
 /obj/item/clothing/accessory/badge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
+		user.visible_message(
+			SPAN_DANG("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),
+			SPAN_DANG("You invade [M]'s personal space, thrusting [src] into their face insistently.")
+		)
 		user.do_attack_animation(M)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
@@ -60,11 +63,11 @@
 
 /obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
-		user << "<span class='danger'>\The [src] is already cracked.</span>"
+		user << SPAN_DANG("\The [src] is already cracked.")
 		return
 	else
-		emagged = 1
-		user << "<span class='danger'>You crack the holobadge security checks.</span>"
+		emagged = TRUE
+		user << SPAN_DANG("You crack the holobadge security checks.")
 		return 1
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)

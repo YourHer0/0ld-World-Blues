@@ -12,5 +12,5 @@
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
 	suicide_act(mob/user)
-		viewers(user) << "<span class='danger'>\The [user] is strangling \himself with \the [src]! It looks like \he's trying to commit suicide.</span>"
+		viewers(user) << SPAN_DANG("\The [user] is strangling \himself with \the [src]! It looks like \he's trying to commit suicide.")
 		return (OXYLOSS)

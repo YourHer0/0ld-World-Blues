@@ -24,7 +24,7 @@ var/global/pipe_processing_killed = 0
 		job_master = new /datum/controller/occupations()
 		job_master.SetupOccupations()
 		job_master.LoadJobs("config/jobs.txt")
-		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
+		admin_notice(SPAN_DANG("Job setup complete"), R_DEBUG)
 
 	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
 	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
@@ -42,22 +42,22 @@ var/global/pipe_processing_killed = 0
 
 
 /datum/controller/game_controller/proc/setup_objects()
-	admin_notice("<span class='danger'>Initializing objects</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("Initializing objects"), R_DEBUG)
 	sleep(-1)
 	for(var/atom/movable/object in world)
 		object.initialize()
 
-	admin_notice("<span class='danger'>Initializing areas</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("Initializing areas"), R_DEBUG)
 	sleep(-1)
 	for(var/area/area in all_areas)
 		area.initialize()
 
-	admin_notice("<span class='danger'>Initializing pipe networks</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("Initializing pipe networks"), R_DEBUG)
 	sleep(-1)
 	for(var/obj/machinery/atmospherics/machine in machines)
 		machine.build_network()
 
-	admin_notice("<span class='danger'>Initializing atmos machinery.</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("Initializing atmos machinery."), R_DEBUG)
 	sleep(-1)
 	for(var/obj/machinery/atmospherics/unary/U in machines)
 		if(istype(U, /obj/machinery/atmospherics/unary/vent_pump))
@@ -79,5 +79,5 @@ var/global/pipe_processing_killed = 0
 	//Set up spawn points.
 	populate_spawn_points()
 
-	admin_notice("<span class='danger'>Initializations complete.</span>", R_DEBUG)
+	admin_notice(SPAN_DANG("Initializations complete."), R_DEBUG)
 	sleep(-1)

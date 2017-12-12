@@ -873,7 +873,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			return
 		return 1
 	else
-		src << "<span class='danger'>You have not been pulled past the veil!</span>"
+		src << SPAN_DANG("You have not been pulled past the veil!")
 
 /mob/observer/dead/verb/choose_ghost_sprite()
 	set category = "Ghost"

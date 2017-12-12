@@ -79,5 +79,10 @@
 #define TELECOMMS_RECEPTION_RECEIVER 2
 #define TELECOMMS_RECEPTION_BOTH 3
 
-#define FRAME_COMPUTER 1
-#define FRAME_LAPTOP 2
+#define FRAME_DEFAULT    null
+#define FRAME_LAPTOP     "laptop"
+#define FRAME_MEDICAL    "med"
+#define FRAME_RND        "rnd"
+#define FRAME_ENGINERING "eng"
+#define FRAME_SECURITY   "sec"
+

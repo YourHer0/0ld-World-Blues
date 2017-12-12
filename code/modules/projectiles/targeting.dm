@@ -66,9 +66,9 @@
 				if(L)
 					L.NotTargeted(src)
 			qdel(aim_targets)
-			usr.visible_message("<span class='danger'><b>[usr] turns \the [src] on [M]!</b></span>")
+			usr.visible_message(SPAN_DANG("<b>[usr] turns \the [src] on [M]!</b>"))
 		else
-			usr.visible_message("<span class='danger'><b>[usr] aims \a [src] at [M]!</b></span>")
+			usr.visible_message(SPAN_DANG("<b>[usr] aims \a [src] at [M]!</b>"))
 		M.Targeted(src)
 
 //HE MOVED, SHOOT HIM!
@@ -82,7 +82,7 @@
 
 	//reflex firing is disabled when help intent is set
 	if (M.a_intent == I_HELP)
-		M << "<span class='danger'>You refrain from firing your [src] as your intent is set to help.</span>"
+		M << SPAN_DANG("You refrain from firing your [src] as your intent is set to help.")
 		return
 
 	M.last_move_intent = world.time
@@ -91,7 +91,7 @@
 		if(firing_check == 1)
 			Fire(T,usr, reflex = 1)
 	else if(!told_cant_shoot)
-		M << "<span class='danger'>They can't be hit from here!</span>"
+		M << SPAN_DANG("They can't be hit from here!")
 		told_cant_shoot = 1
 		spawn(30)
 			told_cant_shoot = 0
@@ -192,7 +192,7 @@
 			I.lower_aim()
 			return
 		if(iscarbon(src) && m_intent == "run" && T.client.target_can_move == 1 && T.client.target_can_run == 0)
-			src << "<span class='danger'>Your move intent is now set to walk, as your targeter permits it.</span>"  //Self explanitory.
+			src << SPAN_DANG("Your move intent is now set to walk, as your targeter permits it.")  //Self explanitory.
 			set_m_intent("walk")
 
 		//Processing the aiming. Should be probably in separate object with process() but lasy.
@@ -320,10 +320,10 @@
 				if(target_can_move)
 					M << "Your character may now <b>walk</b> at the discretion of their targeter."
 					if(!target_can_run)
-						M << "<span class='danger'>Your move intent is now set to walk, as your targeter permits it.</span>"
+						M << SPAN_DANG("Your move intent is now set to walk, as your targeter permits it.")
 						M.set_m_intent("walk")
 				else
-					M << "<span class='danger'><b>Your character will now be shot if they move.</b></span>"
+					M << SPAN_DANG("Your character will now be shot if they move.")
 
 /mob/living/proc/set_m_intent(var/intent)
 	if (intent != "walk" && intent != "run")
@@ -356,7 +356,7 @@ client/verb/AllowTargetRun()
 				if(target_can_run)
 					M << "Your character may now <b>run</b> at the discretion of their targeter."
 				else
-					M << "<span class='danger'><b>Your character will now be shot if they run.</b></span>"
+					M << SPAN_DANG("Your character will now be shot if they run.")
 
 /client/verb/AllowTargetClick()
 	set hidden=1
@@ -380,7 +380,7 @@ client/verb/AllowTargetRun()
 				if(target_can_click)
 					M << "Your character may now <b>use items</b> at the discretion of their targeter."
 				else
-					M << "<span class='danger'><b>Your character will now be shot if they use items.</b></span>"
+					M << SPAN_DANG("Your character will now be shot if they use items.")
 
 /client/verb/AllowTargetRadio()
 	set hidden=1
@@ -403,4 +403,4 @@ client/verb/AllowTargetRun()
 				if(target_can_radio)
 					M << "Your character may now <b>use the radio</b> at the discretion of their targeter."
 				else
-					M << "<span class='danger'><b>Your character will now be shot if they use the radio.</b></span>"
+					M << SPAN_DANG("Your character will now be shot if they use the radio.")

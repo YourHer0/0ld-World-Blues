@@ -50,8 +50,9 @@
 
 	suicide_act(mob/user)
 		viewers(user) << pick(\
-			"<span class='danger'>\The [user] is stabbing the [src.name] into \his temple! It looks like \he's trying to commit suicide.</span>", \
-			"<span class='danger'>\The [user] is stabbing the [src.name] into \his heart! It looks like \he's trying to commit suicide.</span>")
+			SPAN_DANG("\The [user] is stabbing the [src.name] into \his temple! It looks like \he's trying to commit suicide."),
+			SPAN_DANG("\The [user] is stabbing the [src.name] into \his heart! It looks like \he's trying to commit suicide."),
+		)
 		return(BRUTELOSS)
 
 /obj/item/weapon/screwdriver/New()
@@ -185,7 +186,7 @@
 /obj/item/weapon/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(istype(W,/obj/item/weapon/screwdriver))
 		if(welding)
-			user << "<span class='danger'>Stop welding first!</span>"
+			user << SPAN_DANG("Stop welding first!")
 			return
 		status = !status
 		if(status)
@@ -244,7 +245,7 @@
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.welding)
 		log_game("[key_name(user)] triggered a fueltank explosion with a welding tool.", O)
-		user << "<span class='danger'>You begin welding on the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>"
+		user << SPAN_DANG("You begin welding on the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.")
 		var/obj/structure/reagent_dispensers/fueltank/tank = O
 		tank.explode()
 		return
@@ -325,7 +326,7 @@
 			if(M)
 				M << SPAN_NOTE("You switch the [src] on.")
 			else if(T)
-				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
+				T.visible_message(SPAN_DANG("\The [src] turns on."))
 			src.force = 15
 			src.damtype = "fire"
 			src.w_class = ITEM_SIZE_LARGE

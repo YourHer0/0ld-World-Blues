@@ -3,18 +3,19 @@
 #define SECURED 1
 
 /obj/structure/computerframe
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	name = "computer frame"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "0"
 	var/state = 0
-	var/frame_type = FRAME_COMPUTER
+	var/frame_type = FRAME_DEFAULT
 	var/obj/item/weapon/circuitboard/circuit = null
 	var/obj/item/stack/material/glass = null
 	var/obj/item/stack/cable_coil/wire = null
 
 /obj/structure/computerframe/laptop
+	density = FALSE
 	frame_type = FRAME_LAPTOP
 	icon_state = "laptop"
 

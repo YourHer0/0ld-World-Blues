@@ -160,7 +160,7 @@
 
 /mob/living/bot/cleanbot/explode()
 	on = 0
-	visible_message("<span class='danger'>[src] blows apart!</span>")
+	visible_message(SPAN_DANG("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/weapon/reagent_containers/glass/beaker/bucket(Tsec)

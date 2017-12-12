@@ -14,7 +14,7 @@
 	var/mob/living/carbon/T = changeling_sting(20,/mob/living/proc/changeling_blind_sting)
 	if(!T)
 		return 0
-	T << "<span class='danger'>Your eyes burn horrificly!</span>"
+	T << SPAN_DANG("Your eyes burn horrificly!")
 	T.disabilities |= NEARSIGHTED
 	var/duration = 300
 	if(src.mind.changeling.recursive_enhancement)

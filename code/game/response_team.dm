@@ -12,16 +12,16 @@ var/can_call_ert
 	set desc = "Send an emergency response team to the station"
 
 	if(!holder)
-		usr << "<span class='danger'>Only administrators may use this command.</span>"
+		usr << SPAN_DANG("Only administrators may use this command.")
 		return
 	if(!ticker)
-		usr << "<span class='danger'>The game hasn't started yet!</span>"
+		usr << SPAN_DANG("The game hasn't started yet!")
 		return
 	if(ticker.current_state == 1)
-		usr << "<span class='danger'>The round hasn't started yet!</span>"
+		usr << SPAN_DANG("The round hasn't started yet!")
 		return
 	if(send_emergency_team)
-		usr << "<span class='danger'>Central Command has already dispatched an emergency response team!</span>"
+		usr << SPAN_DANG("Central Command has already dispatched an emergency response team!")
 		return
 	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
 		return
@@ -30,7 +30,7 @@ var/can_call_ert
 			if("No")
 				return
 	if(send_emergency_team)
-		usr << "<span class='danger'>Looks like somebody beat you to it!</span>"
+		usr << SPAN_DANG("Looks like somebody beat you to it!")
 		return
 
 //	message_admins("[key_name_admin(usr)] is dispatching an Emergency Response Team.", 1)
@@ -55,7 +55,7 @@ client/verb/JoinResponseTeam()
 			jobban_isbanned(usr, "Emergency Response Team") || \
 			jobban_isbanned(usr, "Security Officer")
 		)
-			usr << "<span class='danger'>You are jobbanned from the emergency reponse team!</span>"
+			usr << SPAN_DANG("You are jobbanned from the emergency reponse team!")
 			return
 		if(ert.current_antagonists.len >= ert.hard_cap)
 			usr << "The emergency response team is already full!"

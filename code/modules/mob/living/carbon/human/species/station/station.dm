@@ -368,7 +368,7 @@
 		H.mind.transfer_to(S)
 
 	if(H.isSynthetic())
-		H.visible_message("<span class='danger'>\The [H] collapses into parts, revealing a solitary diona nymph at the core.</span>")
+		H.visible_message(SPAN_DANG("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
 		return
 
 	for(var/mob/living/carbon/alien/diona/D in H.contents)
@@ -377,7 +377,7 @@
 		else
 			qdel(D)
 
-	H.visible_message("<span class='danger'>\The [H] splits apart with a wet slithering noise!</span>")
+	H.visible_message(SPAN_DANG("\The [H] splits apart with a wet slithering noise!"))
 
 /datum/species/machine
 	name = SPECIES_IPC

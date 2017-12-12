@@ -26,7 +26,7 @@
 		var/health_to_take_away = H.maxHealth * (effect / 100)
 
 		H.maxHealth -= health_to_take_away
-		H << "<span class='danger'>You feel a small prick and you feel extremly weak!</span>"
+		H << SPAN_DANG("You feel a small prick and you feel extremly weak!")
 		src.verbs -= /mob/living/proc/changeling_enfeebling_string
 		spawn(5 MINUTES)
 			src.verbs |= /mob/living/proc/changeling_enfeebling_string

@@ -163,7 +163,7 @@
 		if(H.can_shred())
 			user.next_move = world.time + 8
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-			visible_message("<span class='danger'>[user] smashes against the [src.name].</span>", 1)
+			visible_message(SPAN_DANG("[user] smashes against the [src.name]."), 1)
 			take_damage(25)
 			return
 	return src.attackby(user, user)
@@ -250,7 +250,7 @@
 	if(src.density && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-		visible_message("<span class='danger'>[src] was hit by [I].</span>")
+		visible_message(SPAN_DANG("[src] was hit by [I]."))
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			take_damage(I.force)
 		return

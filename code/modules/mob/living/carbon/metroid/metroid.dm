@@ -202,7 +202,7 @@
 	if(shielded)
 		damage /= 4
 
-	show_message("<span class='danger'> The blob attacks you!</span>")
+	show_message(SPAN_DANG(" The blob attacks you!"))
 
 	adjustFireLoss(damage)
 
@@ -320,21 +320,23 @@
 				*/
 
 				playsound(loc, "punch", 25, 1, -1)
-				visible_message("<span class='danger'>[M] has punched [src]!</span>", \
-						"<span class='danger'>[M] has punched [src]!</span>")
+				visible_message(
+					SPAN_DANG("[M] has punched [src]!"),
+					SPAN_DANG("[M] has punched [src]!")
+					)
 
 				adjustBruteLoss(damage)
 				updatehealth()
 			else
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message("<span class='danger'>[M] has attempted to punch [src]!</span>")
+				visible_message(SPAN_DANG("[M] has attempted to punch [src]!"))
 	return
 
 /mob/living/carbon/slime/attackby(obj/item/W, mob/user)
 	if(W.force > 0)
 		attacked += 10
 		if(prob(25))
-			user << "<span class='danger'>[W] passes right through [src]!</span>"
+			user << SPAN_DANG("[W] passes right through [src]!")
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0

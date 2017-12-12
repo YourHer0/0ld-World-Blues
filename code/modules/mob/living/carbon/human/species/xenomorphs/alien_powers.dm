@@ -22,16 +22,16 @@
 
 	var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA]
 	if(!istype(P))
-		src << "<span class='danger'>Your plasma vessel has been removed!</span>"
+		src << SPAN_DANG("Your plasma vessel has been removed!")
 		return
 
 	if(needs_organ)
 		var/obj/item/organ/internal/I = internal_organs_by_name[needs_organ]
 		if(!I)
-			src << "<span class='danger'>Your [needs_organ] has been removed!</span>"
+			src << SPAN_DANG("Your [needs_organ] has been removed!")
 			return
 		else if((I.status & ORGAN_CUT_AWAY) || I.is_broken())
-			src << "<span class='danger'>Your [needs_organ] is too damaged to function!</span>"
+			src << SPAN_DANG("Your [needs_organ] is too damaged to function!")
 			return
 
 	if(P.stored_plasma < cost)

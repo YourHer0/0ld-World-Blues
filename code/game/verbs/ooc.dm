@@ -21,18 +21,18 @@
 
 	if(src.mob)
 		if(jobban_isbanned(src.mob, "OOC"))
-			src << "<span class='danger'>You have been banned from OOC.</span>"
+			src << SPAN_DANG("You have been banned from OOC.")
 			return
 
 	if(!holder)
 		if(!config.ooc_allowed)
-			src << "<span class='danger'>OOC is globally muted.</span>"
+			src << SPAN_DANG("OOC is globally muted.")
 			return
 		if(!config.dooc_allowed && (mob.stat == DEAD))
-			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
+			usr << SPAN_DANG("OOC for dead mobs has been turned off.")
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "<span class='danger'>You cannot use OOC (muted).</span>"
+			src << SPAN_DANG("You cannot use OOC (muted).")
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -86,7 +86,7 @@
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		usr << SPAN_DANG("Speech is currently admin-disabled.")
 		return
 
 	if(!mob)
@@ -97,7 +97,7 @@
 		return
 
 	if(jobban_isbanned(src.mob, "LOOC"))
-		src << "<span class='danger'>You have been banned from LOOC.</span>"
+		src << SPAN_DANG("You have been banned from LOOC.")
 		return
 
 	msg = sanitize(msg)
@@ -110,13 +110,13 @@
 
 	if(!holder)
 		if(!config.looc_allowed)
-			src << "<span class='danger'>LOOC is globally muted.</span>"
+			src << SPAN_DANG("LOOC is globally muted.")
 			return
 		if(!config.dooc_allowed && (mob.stat == DEAD))
-			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
+			usr << SPAN_DANG("OOC for dead mobs has been turned off.")
 			return
 		if(prefs.muted & MUTE_LOOC)
-			src << "<span class='danger'>You cannot use LOOC (muted).</span>"
+			src << SPAN_DANG("You cannot use LOOC (muted).")
 			return
 		if(handle_spam_prevention(msg,MUTE_LOOC))
 			return

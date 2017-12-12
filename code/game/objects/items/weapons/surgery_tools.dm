@@ -67,8 +67,10 @@
 	attack_verb = list("drilled")
 
 	suicide_act(mob/user)
-		viewers(user) << pick("<span class='danger'>\The [user] is pressing \the [src] to \his temple and activating it! It looks like \he's trying to commit suicide.</span>",
-		                       "<span class='danger'>\The [user] is pressing \the [src] to \his chest and activating it! It looks like \he's trying to commit suicide.</span>")
+		viewers(user) << pick(\
+			SPAN_DANG("\The [user] is pressing \the [src] to \his temple and activating it! It looks like \he's trying to commit suicide."),
+			SPAN_DANG("\The [user] is pressing \the [src] to \his chest and activating it! It looks like \he's trying to commit suicide."),
+		)
 		return (BRUTELOSS)
 
 /*
@@ -93,9 +95,11 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 	suicide_act(mob/user)
-		viewers(user) << pick("<span class='danger'>\The [user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting \his throat with the [src.name]! It looks like \he's trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</span>")
+		viewers(user) << pick(\
+			SPAN_DANG("\The [user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide."),
+			SPAN_DANG("\The [user] is slitting \his throat with the [src.name]! It looks like \he's trying to commit suicide."),
+			SPAN_DANG("\The [user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku."),
+		)
 		return (BRUTELOSS)
 
 /*

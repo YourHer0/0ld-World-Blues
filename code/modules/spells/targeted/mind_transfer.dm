@@ -76,4 +76,4 @@
 
 		//After a certain amount of time the victim gets a message about being in a different body.
 		spawn(msg_wait)
-			caster << "<span class='danger'>You feel woozy and lightheaded. Your body doesn't seem like your own.</span>"
+			caster << SPAN_DANG("You feel woozy and lightheaded. Your body doesn't seem like your own.")

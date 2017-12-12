@@ -24,7 +24,7 @@
 			if(!O.completed && !O.check_completion())
 				result = 0
 		if(result && victory_text)
-			world << "<span class='danger'><font size = 3>[victory_text]</span>"
+			world << SPAN_DANG("<font size = 3>[victory_text]")
 		else if(loss_text)
-			world << "<span class='danger'><font size = 3>[loss_text]</span>"
+			world << SPAN_DANG("<font size = 3>[loss_text]")
 

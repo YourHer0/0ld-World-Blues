@@ -102,7 +102,7 @@ var/datum/antagonist/ninja/ninjas
 		if(player.internal)
 			player.internals.icon_state = "internal1"
 		else
-			player << "<span class='danger'>You forgot to turn on your internals! Quickly, toggle the valve!</span>"
+			player << SPAN_DANG("You forgot to turn on your internals! Quickly, toggle the valve!")
 
 /datum/antagonist/ninja/proc/generate_ninja_directive(side)
 	var/directive = "[side=="face"?"Nanotrasen":"A criminal syndicate"] is your employer. "//Let them know which side they're on.

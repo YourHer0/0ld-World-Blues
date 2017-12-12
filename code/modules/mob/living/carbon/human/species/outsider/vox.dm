@@ -137,7 +137,7 @@
 					continue
 				if(target.wear_mask && (target.wear_mask.body_parts_covered & FACE) && (target.wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
 					continue
-			M << "<span class='danger'>A terrible stench emanates from \the [H].</span>"
+			M << SPAN_DANG("A terrible stench emanates from \the [H].")
 
 /datum/species/vox/pariah/get_bodytype()
 	return SPECIES_VOX

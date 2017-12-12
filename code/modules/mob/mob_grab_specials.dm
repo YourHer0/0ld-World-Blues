@@ -50,10 +50,10 @@
 	if(!organ || organ.dislocated == -1)
 		return
 
-	attacker.visible_message("<span class='danger'>[attacker] [pick("bent", "twisted")] [target]'s [organ.name] into a jointlock!</span>")
+	attacker.visible_message(SPAN_DANG("[attacker] [pick("bent", "twisted")] [target]'s [organ.name] into a jointlock!"))
 	var/armor = target.run_armor_check(target, "melee")
 	if(armor < 2)
-		target << "<span class='danger'>You feel extreme pain!</span>"
+		target << SPAN_DANG("You feel extreme pain!")
 		affecting.adjustHalLoss(Clamp(0, 60-affecting.halloss, 30)) //up to 60 halloss
 
 /obj/item/weapon/grab/proc/attack_eye(mob/living/carbon/human/target, mob/living/carbon/human/attacker)
@@ -69,10 +69,10 @@
 		return
 	for(var/obj/item/protection in list(target.head, target.wear_mask, target.glasses))
 		if(protection && (protection.body_parts_covered & EYES))
-			attacker << "<span class='danger'>You're going to need to remove the eye covering first.</span>"
+			attacker << SPAN_DANG("You're going to need to remove the eye covering first.")
 			return
 	if(!target.has_eyes())
-		attacker << "<span class='danger'>You cannot locate any eyes on [target]!</span>"
+		attacker << SPAN_DANG("You cannot locate any eyes on [target]!")
 		return
 
 	admin_attack_log(attacker, target,
@@ -88,7 +88,7 @@
 		return
 	if(target.lying)
 		return
-	attacker.visible_message("<span class='danger'>[attacker] thrusts \his head into [target]'s skull!</span>")
+	attacker.visible_message(SPAN_DANG("[attacker] thrusts \his head into [target]'s skull!"))
 
 	var/damage = 20
 	var/obj/item/clothing/hat = attacker.head
@@ -101,7 +101,7 @@
 
 	if(!armor && prob(damage))
 		target.apply_effect(20, PARALYZE)
-		target.visible_message("<span class='danger'>[target] [target.get_knockout_message()]</span>")
+		target.visible_message(SPAN_DANG("[target] [target.get_knockout_message()]"))
 
 	playsound(attacker.loc, "swing_hit", 25, 1, -1)
 	admin_attack_log(attacker, target,
@@ -130,10 +130,10 @@
 	if(force_down)
 		attacker << "<span class='warning'>You are already pinning [target] to the ground.</span>"
 
-	attacker.visible_message("<span class='danger'>[attacker] starts forcing [target] to the ground!</span>")
+	attacker.visible_message(SPAN_DANG("[attacker] starts forcing [target] to the ground!"))
 	if(do_after(attacker, 20) && target)
 		last_action = world.time
-		attacker.visible_message("<span class='danger'>[attacker] forces [target] to the ground!</span>")
+		attacker.visible_message(SPAN_DANG("[attacker] forces [target] to the ground!"))
 		apply_pinning(target, attacker)
 
 /obj/item/weapon/grab/proc/apply_pinning(mob/target, mob/attacker)
@@ -155,12 +155,12 @@
 
 	if(can_eat)
 		var/mob/living/carbon/attacker = user
-		user.visible_message("<span class='danger'>[user] is attempting to devour [target]!</span>")
+		user.visible_message(SPAN_DANG("[user] is attempting to devour [target]!"))
 		if(can_eat == 2)
 			if(!do_mob(user, target, 30)) return
 		else
 			if(!do_mob(user, target, 100)) return
-		user.visible_message("<span class='danger'>[user] devours [target]!</span>")
+		user.visible_message(SPAN_DANG("[user] devours [target]!"))
 		target.loc = user
 		attacker.stomach_contents.Add(target)
 		qdel(src)

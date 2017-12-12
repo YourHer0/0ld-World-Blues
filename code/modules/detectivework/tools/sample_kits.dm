@@ -91,7 +91,7 @@
 		return 1
 
 	if(user != H && H.a_intent != "help" && !H.lying)
-		user.visible_message("<span class='danger'>\The [user] tries to take prints from \the [H], but they move away.</span>")
+		user.visible_message(SPAN_DANG("\The [user] tries to take prints from \the [H], but they move away."))
 		return 1
 
 	if(user.zone_sel.selecting == BP_R_HAND || user.zone_sel.selecting == BP_L_HAND)

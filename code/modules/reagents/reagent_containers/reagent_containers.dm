@@ -71,7 +71,7 @@
 	)
 
 	user.visible_message(
-		"<span class='danger'>[target] has been splashed with something by [user]!</span>",
+		SPAN_DANG("[target] has been splashed with something by [user]!"),
 		SPAN_NOTE("You splash the solution onto [target].")
 	)
 	reagents.splash(target, reagents.total_volume*0.5)

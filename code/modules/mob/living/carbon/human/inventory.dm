@@ -347,7 +347,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			W.equipped(src, slot)
 			update_inv_underwear(redraw_mob)
 		else
-			src << "<span class='danger'>You are trying to eqip this item to an unsupported inventory slot. If possible, please write a ticket with steps to reproduce. Slot was: [slot]</span>"
+			src << SPAN_DANG("You are trying to eqip this item to an unsupported inventory slot. If possible, please write a ticket with steps to reproduce. Slot was: [slot]")
 			return
 
 	if((W == src.l_hand) && (slot != slot_l_hand))

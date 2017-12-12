@@ -162,11 +162,10 @@
 
 	if (disabilities & EPILEPSY)
 		if ((prob(1) && paralysis < 1))
-			src << "\red You have a seizure!"
-			for(var/mob/O in viewers(src, null))
-				if(O == src)
-					continue
-				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
+			src.visible_message(
+				SPAN_DANG("[src] starts having a seizure!"),
+				SPAN_WARN("You have a seizure!")
+			)
 			Paralyse(10)
 			make_jittery(1000)
 	if (disabilities & COUGHING)
@@ -201,15 +200,15 @@
 			eye_blurry = 10
 	if(getBrainLoss() >= 35)
 		if(7 <= rn && rn <= 9) if(get_active_hand())
-			src << "<span class='danger'>Your hand won't respond properly, you drop what you're holding!</span>"
+			src << SPAN_DANG("Your hand won't respond properly, you drop what you're holding!")
 			drop_active_hand()
 	if(getBrainLoss() >= 45)
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
-				src << "<span class='danger'>You suddenly black out!</span>"
+				src << SPAN_DANG("You suddenly black out!")
 				Paralyse(10)
 			else if(!lying)
-				src << "<span class='danger'>Your legs won't respond properly, you fall down!</span>"
+				src << SPAN_DANG("Your legs won't respond properly, you fall down!")
 				Weaken(10)
 
 
@@ -427,7 +426,7 @@
 		if(exhaled_pp > safe_exhaled_max)
 			if (!co2_alert|| prob(15))
 				var/word = pick("extremely dizzy","short of breath","faint","confused")
-				src << "<span class='danger'>You feel [word].</span>"
+				src << SPAN_DANG("You feel [word].")
 
 			adjustOxyLoss(HUMAN_MAX_OXYLOSS)
 			co2_alert = 1
@@ -498,10 +497,10 @@
 
 		if(breath.temperature <= species.cold_level_1)
 			if(prob(20))
-				src << "<span class='danger'>You feel your face freezing and icicles forming in your lungs!</span>"
+				src << SPAN_DANG("You feel your face freezing and icicles forming in your lungs!")
 		else if(breath.temperature >= species.heat_level_1)
 			if(prob(20))
-				src << "<span class='danger'>You feel your face burning and a searing heat in your lungs!</span>"
+				src << SPAN_DANG("You feel your face burning and a searing heat in your lungs!")
 
 		if(breath.temperature >= species.heat_level_1)
 			if(breath.temperature < species.heat_level_2)
@@ -1397,7 +1396,7 @@
 		return
 
 	if(shock_stage == 10)
-		src << "<span class='danger'>[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!</span>"
+		src << SPAN_DANG(pick("It hurts so much!", "You really need some painkillers!", "Dear god, the pain!"))
 
 	if(shock_stage >= 30)
 		if(shock_stage == 30) custom_emote(1,"is having trouble keeping their eyes open.")
@@ -1405,22 +1404,22 @@
 		stuttering = max(stuttering, 5)
 
 	if(shock_stage == 40)
-		src << "<span class='danger'>[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!</span>"
+		src << SPAN_DANG(pick("The pain is excruciating!", "Please, just end the pain!", "Your whole body is going numb!"))
 
 	if (shock_stage >= 60)
 		if(shock_stage == 60) custom_emote(1,"'s body becomes limp.")
 		if (prob(2))
-			src << "<span class='danger'>[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!</span>"
+			src << SPAN_DANG(pick("The pain is excruciating!", "Please, just end the pain!", "Your whole body is going numb!"))
 			Weaken(20)
 
 	if(shock_stage >= 80)
 		if (prob(5))
-			src << "<span class='danger'>[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!</span>"
+			src << SPAN_DANG(pick("The pain is excruciating!", "Please, just end the pain!", "Your whole body is going numb!"))
 			Weaken(20)
 
 	if(shock_stage >= 120)
 		if (prob(2))
-			src << "<span class='danger'>[pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")]!</span>"
+			src << SPAN_DANG(pick("You black out!", "You feel like you could die any moment now!", "You're about to lose consciousness!"))
 			Paralyse(5)
 
 	if(shock_stage == 150)

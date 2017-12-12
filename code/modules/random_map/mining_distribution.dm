@@ -62,13 +62,13 @@ Deep minerals:
 			deep_count++
 	// Sanity check.
 	if(surface_count < MIN_SURFACE_COUNT)
-		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
+		admin_notice(SPAN_DANG("Insufficient surface minerals. Rerolling..."), R_DEBUG)
 		return 0
 	else if(rare_count < MIN_RARE_COUNT)
-		admin_notice("<span class='danger'>Insufficient rare minerals. Rerolling...</span>", R_DEBUG)
+		admin_notice(SPAN_DANG("Insufficient rare minerals. Rerolling..."), R_DEBUG)
 		return 0
 	else if(deep_count < MIN_DEEP_COUNT)
-		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
+		admin_notice(SPAN_DANG("Insufficient deep minerals. Rerolling..."), R_DEBUG)
 		return 0
 	else
 		return 1
@@ -112,7 +112,7 @@ Deep minerals:
 
 	// Infinite loop check!
 	if(iteration>=iterate_before_fail)
-		admin_notice("<span class='danger'>Iteration count exceeded, aborting.</span>", R_DEBUG)
+		admin_notice(SPAN_DANG("Iteration count exceeded, aborting."), R_DEBUG)
 		return
 
 	var/isize = input_size

@@ -63,13 +63,11 @@
 			M.take_organ_damage(5)
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
-			for(var/mob/O in viewers(M, null))
-				O.show_message("<span class='danger'>[user] slams [M] with the tray!</span>", 1)
+			M.visible_message(SPAN_DANG("[user] slams [M] with the tray!"))
 			return
 		else
 			playsound(M, 'sound/items/trayhit2.ogg', 50, 1)  //we applied the damage, we played the sound, we showed the appropriate messages. Time to return and stop the proc
-			for(var/mob/O in viewers(M, null))
-				O.show_message("<span class='danger'>[user] slams [M] with the tray!</span>", 1)
+			M.visible_message(SPAN_DANG("[user] slams [M] with the tray!"))
 			return
 
 
@@ -96,8 +94,7 @@
 			if (istype(location, /turf/simulated))     //Addin' blood! At least on the floor and item :v
 				location.add_blood(H)
 
-		for(var/mob/O in viewers(M, null))
-			O.show_message("<span class='danger'>[user] slams [H] with the tray!</span>", 1)
+		M.visible_message(SPAN_DANG("[user] slams [H] with the tray!"))
 
 		if(prob(50))
 			playsound(H, 'sound/items/trayhit1.ogg', 50, 1)
@@ -120,8 +117,7 @@
 			if (istype(location, /turf/simulated))
 				location.add_blood(M)
 
-		for(var/mob/O in viewers(M, null))
-			O.show_message("<span class='danger'>[user] slams [M] in the face with the tray!</span>", 1)
+		M.visible_message(SPAN_DANG("[user] slams [M] in the face with the tray!"))
 
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 50, 1)

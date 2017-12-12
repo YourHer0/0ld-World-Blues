@@ -81,7 +81,7 @@ var/global/list/narsie_list = list()
 			if(M.status_flags & GODMODE)
 				continue
 			if(!iscultist(M))
-				M << "<span class='danger'> You feel your sanity crumble away in an instant as you gaze upon [src.name]...</span>"
+				M << SPAN_DANG(" You feel your sanity crumble away in an instant as you gaze upon [src.name]...")
 				M.apply_effect(3, STUN)
 
 
@@ -318,9 +318,9 @@ var/global/list/narsie_list = list()
 	target = food
 
 	if (ishuman(target))
-		target << "<span class='danger'>[capname] HUNGERS FOR YOUR SOUL.</span>"
+		target << SPAN_DANG("[capname] HUNGERS FOR YOUR SOUL.")
 	else
-		target << "<span class='danger'>[capname] HAS CHOSEN YOU TO LEAD HIM TO HIS NEXT MEAL.</span>"
+		target << SPAN_DANG("[capname] HAS CHOSEN YOU TO LEAD HIM TO HIS NEXT MEAL.")
 
 /obj/singularity/narsie/on_capture()
 	chained = 1

@@ -153,7 +153,7 @@
 		helmet.forceMove(src)
 	else
 		if(H.head)
-			H << "<span class='danger'>You cannot deploy your helmet while wearing \the [H.head].</span>"
+			H << SPAN_DANG("You cannot deploy your helmet while wearing \the [H.head].")
 			return
 		if(H.equip_to_slot_if_possible(helmet, slot_head))
 			helmet.pickup(H)
@@ -224,7 +224,7 @@
 		return ..()
 
 	if(isliving(src.loc))
-		user << "<span class='danger'>How do you propose to modify a voidsuit while it is being worn?</span>"
+		user << SPAN_DANG("How do you propose to modify a voidsuit while it is being worn?")
 		return
 
 	if(istype(W,/obj/item/weapon/screwdriver))

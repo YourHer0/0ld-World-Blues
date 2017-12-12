@@ -57,7 +57,7 @@
 				"planted [name] on [key_name(target)]", "planted with [name] by [key_name(user)]",
 				"planted [name] ([timer] second fuse) on",
 			)
-			user.visible_message("<span class='danger'>[user.name] finished planting an explosive on [target.name]!</span>")
+			user.visible_message(SPAN_DANG("[user.name] finished planting an explosive on [target.name]!"))
 
 		else
 			log_attack("[key_name(user)] planted [src.name] on [target.name] with [timer] second fuse.", target)

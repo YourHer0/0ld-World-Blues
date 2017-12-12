@@ -427,7 +427,7 @@
 			if(R.price <= 0)
 				src.vend(R, usr)
 			else if(issilicon(usr)) //If the item is not free, provide feedback if a synth is trying to buy something.
-				usr << "<span class='danger'>Artificial unit recognized.  Artificial units cannot complete this transaction.  Purchase canceled.</span>"
+				usr << SPAN_DANG("Artificial unit recognized.  Artificial units cannot complete this transaction.  Purchase canceled.")
 				return
 			else
 				src.currently_vending = R

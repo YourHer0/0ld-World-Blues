@@ -240,11 +240,11 @@ var/obj/screen/robot_inventory
 		//r.client.screen += robot_inventory	//"store" icon
 
 		if(!r.module)
-			usr << "<span class='danger'>No module selected</span>"
+			usr << SPAN_DANG("No module selected")
 			return
 
 		if(!r.module.modules)
-			usr << "<span class='danger'>Selected module has no modules to select</span>"
+			usr << SPAN_DANG("Selected module has no modules to select")
 			return
 
 		if(!r.robot_modules_background)

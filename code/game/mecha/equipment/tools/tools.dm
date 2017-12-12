@@ -84,8 +84,11 @@
 			if(!target_obj.vars.Find("unacidable") || target_obj.unacidable)	return
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
-		chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
-		occupant_message("<span class='danger'>You start to drill [target]</span>")
+		chassis.visible_message(
+			SPAN_DANG("[chassis] starts to drill [target]"),
+			"<span class='warning'>You hear the drill.</span>"
+		)
+		occupant_message(SPAN_DANG("You start to drill [target]"))
 		playsound(src,'sound/mecha/mechdrill.ogg',100,1)
 		var/T = chassis.loc
 		var/C = target.loc	//why are these backwards? we may never know -Pete
@@ -140,8 +143,11 @@
 			if(target_obj.unacidable)	return
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
-		chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
-		occupant_message("<span class='danger'>You start to drill [target]</span>")
+		chassis.visible_message(
+			SPAN_DANG("[chassis] starts to drill [target]"),
+			"<span class='warning'>You hear the drill.</span>"
+		)
+		occupant_message(SPAN_DANG("You start to drill [target]"))
 		playsound(src,'sound/mecha/mechdrill.ogg',100,1)
 		var/T = chassis.loc
 		var/C = target.loc	//why are these backwards? we may never know -Pete
@@ -536,8 +542,11 @@
 			user << "\red The [W] bounces off [chassis] armor."
 			chassis.log_append_to_last("Armor saved.")
 		else
-			chassis.occupant_message("<span class='danger'>[user] hits [chassis] with [W].</span>")
-			user.visible_message("<span class='danger'><b>[user] hits [chassis] with [W].</span>", "<span class='danger'>You hit [src] with [W].</span>")
+			chassis.occupant_message(SPAN_DANG("[user] hits [chassis] with [W]."))
+			user.visible_message(
+				SPAN_DANG("[user] hits [chassis] with [W]."),
+				SPAN_DANG("You hit [src] with [W].")
+			)
 			chassis.take_damage(round(W.force*damage_coeff),W.damtype)
 			chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		set_ready_state(0)
@@ -1045,11 +1054,11 @@
 			var/mob/living/M = target
 			if(M.stat>1) return
 			if(chassis.occupant.a_intent == I_HURT)
-				chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
-				chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.<span>")
+				chassis.occupant_message(SPAN_DANG("You obliterate [target] with [src.name], leaving blood and guts everywhere."))
+				chassis.visible_message(SPAN_DANG("[chassis] destroys [target] in an unholy fury."))
 			if(chassis.occupant.a_intent == I_DISARM)
-				chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
-				chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
+				chassis.occupant_message(SPAN_DANG("You tear [target]'s limbs off with [src.name]."))
+				chassis.visible_message(SPAN_DANG("[chassis] rips [target]'s arms off."))
 			else
 				step_away(M,chassis)
 				chassis.occupant_message("You smash into [target], sending them flying.")
@@ -1075,7 +1084,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/destroy()
 	for(var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
-		AM << "<span class='danger'>You tumble out of the destroyed [src.name]!</span>"
+		AM << SPAN_DANG("You tumble out of the destroyed [src.name]!")
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/Exit(atom/movable/O)
@@ -1167,18 +1176,18 @@
 		return
 
 	if (!isturf(usr.loc))
-		usr << "<span class='danger'>You can't reach the passenger compartment from here.</span>"
+		usr << SPAN_DANG("You can't reach the passenger compartment from here.")
 		return
 
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C.handcuffed)
-			usr << "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>"
+			usr << SPAN_DANG("Kinda hard to climb in while handcuffed don't you think?")
 			return
 
 	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
-			usr << "<span class='danger'>You're too busy getting your life sucked out of you.</span>"
+			usr << SPAN_DANG("You're too busy getting your life sucked out of you.")
 			return
 
 	//search for a valid passenger compartment
@@ -1198,11 +1207,11 @@
 	//didn't find anything
 	switch (feedback)
 		if (OCCUPIED)
-			usr << "<span class='danger'>The passenger compartment is already occupied!</span>"
+			usr << SPAN_DANG("The passenger compartment is already occupied!")
 		if (LOCKED)
 			usr << "<span class='warning'>The passenger compartment hatch is locked!</span>"
 		if (OCCUPIED|LOCKED)
-			usr << "<span class='danger'>All of the passenger compartments are already occupied or locked!</span>"
+			usr << SPAN_DANG("All of the passenger compartments are already occupied or locked!")
 		if (0)
 			usr << "<span class='warning'>\The [src] doesn't have a passenger compartment.</span>"
 

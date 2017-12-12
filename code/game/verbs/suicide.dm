@@ -66,10 +66,12 @@
 				return
 
 		log_and_message_admins("[key_name(src)] commited suicide")
-		viewers(src) << pick("<span class='danger'>[src] is attempting to bite \his tongue off! It looks like \he's trying to commit suicide.</span>", \
-		                     "<span class='danger'>[src] is jamming \his thumbs into \his eye sockets! It looks like \he's trying to commit suicide.</span>", \
-		                     "<span class='danger'>[src] is twisting \his own neck! It looks like \he's trying to commit suicide.</span>", \
-		                     "<span class='danger'>[src] is holding \his breath! It looks like \he's trying to commit suicide.</span>")
+		viewers(src) << pick(\
+			SPAN_DANG("[src] is attempting to bite \his tongue off! It looks like \he's trying to commit suicide."),
+			SPAN_DANG("[src] is jamming \his thumbs into \his eye sockets! It looks like \he's trying to commit suicide."),
+			SPAN_DANG("[src] is twisting \his own neck! It looks like \he's trying to commit suicide."),
+			SPAN_DANG("[src] is holding \his breath! It looks like \he's trying to commit suicide."),
+		)
 		adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
 
@@ -92,7 +94,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(loc) << "<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>"
+		viewers(loc) << SPAN_DANG("[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.")
 		spawn(50)
 			death(0)
 			suiciding = 0
@@ -112,7 +114,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(src) << "<span class='danger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>"
+		viewers(src) << SPAN_DANG("[src] is powering down. It looks like \he's trying to commit suicide.")
 		//put em at -175
 		adjustFireLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -132,7 +134,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(src) << "<span class='danger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>"
+		viewers(src) << SPAN_DANG("[src] is powering down. It looks like \he's trying to commit suicide.")
 		//put em at -175
 		adjustFireLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()

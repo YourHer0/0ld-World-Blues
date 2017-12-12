@@ -30,13 +30,13 @@
 	)
 
 	if(!user.cell || !user.cell.checked_use(1250)) //Slightly more than a baton.
-		user.visible_message("<span class='danger'>\The [user] has prodded \the [M] with its arm!</span>")
+		user.visible_message(SPAN_DANG("\The [user] has prodded \the [M] with its arm!"))
 		return
 
 	if (M.stuttering < 5)
 		M.stuttering = 5
 	M.stun_effect_act(0, 70, check_zone(user.zone_sel.selecting), src)
-	user.visible_message("<span class='danger'>\The [user] has prodded \the [M] with \a [src]!</span>")
+	user.visible_message(SPAN_DANG("\The [user] has prodded \the [M] with \a [src]!"))
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.forcesay(hit_appends)

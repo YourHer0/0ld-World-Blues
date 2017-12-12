@@ -243,7 +243,7 @@
 			wrapped = I
 			return
 		else
-			user << "<span class='danger'>Your gripper cannot hold \the [target].</span>"
+			user << SPAN_DANG("Your gripper cannot hold \the [target].")
 
 	else if(istype(target,/obj/machinery/power/apc))
 		var/obj/machinery/power/apc/A = target
@@ -260,7 +260,10 @@
 				A.charging = 0
 				A.update_icon()
 
-				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
+				user.visible_message(
+					SPAN_DANG("[user] removes the power cell from [A]!"),
+					"You remove the power cell."
+				)
 
 	else if(isrobot(target))
 		var/mob/living/silicon/robot/A = target
@@ -275,4 +278,7 @@
 				A.cell.loc = src
 				A.cell = null
 
-				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
+				user.visible_message(
+					SPAN_DANG("[user] removes the power cell from [A]!"),
+					"You remove the power cell."
+				)

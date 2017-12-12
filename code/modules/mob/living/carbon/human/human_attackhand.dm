@@ -89,14 +89,14 @@
 				spawn(30)
 					cpr_time = 1
 
-				H.visible_message("<span class='danger'>\The [H] is trying perform CPR on \the [src]!</span>")
+				H.visible_message(SPAN_DANG("\The [H] is trying perform CPR on \the [src]!"))
 
 				if(!do_after(H, 30))
 					return
 
 				adjustOxyLoss(-(min(getOxyLoss(), 5)))
 				updatehealth()
-				H.visible_message("<span class='danger'>\The [H] performs CPR on \the [src]!</span>")
+				H.visible_message(SPAN_DANG("\The [H] performs CPR on \the [src]!"))
 				src << SPAN_NOTE("You feel a breath of fresh air enter your lungs. It feels good.")
 				H << "<span class='warning'>Repeat at least every 7 seconds.</span>"
 
@@ -141,7 +141,7 @@
 			var/obj/item/organ/external/affecting = get_organ(hit_zone)
 
 			if(!affecting || affecting.is_stump())
-				M << "<span class='danger'>They are missing that limb!</span>"
+				M << SPAN_DANG("They are missing that limb!")
 				return 1
 
 			switch(src.a_intent)
@@ -213,7 +213,7 @@
 			if(!attack_message)
 				attack.show_attack(H, src, hit_zone, rand_damage)
 			else
-				H.visible_message("<span class='danger'>[attack_message]</span>")
+				H.visible_message(SPAN_DANG("[attack_message]"))
 
 			playsound(loc, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), 25, 1, -1)
 
@@ -281,7 +281,7 @@
 						turfs += T
 					if(turfs.len)
 						var/turf/target = pick(turfs)
-						visible_message("<span class='danger'>[src]'s [W] goes off during the struggle!</span>")
+						visible_message(SPAN_DANG("[src]'s [W] goes off during the struggle!"))
 						return W.afterattack(target,src)
 
 			var/randn = rand(1, 100)
@@ -290,7 +290,7 @@
 				apply_effect(3, WEAKEN, armor_check)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 2)
-					visible_message("<span class='danger'>[M] has pushed [src]!</span>")
+					visible_message(SPAN_DANG("[M] has pushed [src]!"))
 				else
 					visible_message("<span class='warning'>[M] attempted to push [src]!</span>")
 				return
@@ -305,7 +305,7 @@
 				for(var/obj/item/I in holding)
 					if(I)
 						drop_from_inventory(I)
-						visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
+						visible_message(SPAN_DANG("[M] has disarmed [src]!"))
 						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						return
 
@@ -326,7 +326,7 @@
 		"was attacked by [key_name(user)]",
 		"attacked"
 	)
-	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
+	src.visible_message(SPAN_DANG("[user] has [attack_message] [src]!"))
 	user.do_attack_animation(src)
 
 	var/dam_zone = pick(organs_by_name)
@@ -375,7 +375,7 @@
 	user.visible_message("<span class='warning'>[user] begins to dislocate [src]'s [organ.joint]!</span>")
 	if(do_after(user, 100))
 		organ.dislocate(1)
-		src.visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
+		src.visible_message(SPAN_DANG("[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!"))
 		return 1
 	return 0
 
@@ -383,21 +383,21 @@
 /mob/living/carbon/human/proc/break_all_grabs(mob/living/carbon/user)
 	var/success = 0
 	if(pulling)
-		visible_message("<span class='danger'>[user] has broken [src]'s grip on [pulling]!</span>")
+		visible_message(SPAN_DANG("[user] has broken [src]'s grip on [pulling]!"))
 		success = 1
 		stop_pulling()
 
 	if(istype(l_hand, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/lgrab = l_hand
 		if(lgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
+			visible_message(SPAN_DANG("[user] has broken [src]'s grip on [lgrab.affecting]!"))
 			success = 1
 		spawn(1)
 			qdel(lgrab)
 	if(istype(r_hand, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/rgrab = r_hand
 		if(rgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
+			visible_message(SPAN_DANG("[user] has broken [src]'s grip on [rgrab.affecting]!"))
 			success = 1
 		spawn(1)
 			qdel(rgrab)

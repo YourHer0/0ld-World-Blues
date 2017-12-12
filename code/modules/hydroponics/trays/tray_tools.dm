@@ -73,7 +73,7 @@
 		grown_reagents = H.reagents
 
 	if(!grown_seed)
-		user << "<span class='danger'>[src] can tell you nothing about \the [target].</span>"
+		user << SPAN_DANG("[src] can tell you nothing about \the [target].")
 		return
 
 	form_title = "[grown_seed.seed_name] (#[grown_seed.uid])"

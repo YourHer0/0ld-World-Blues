@@ -36,8 +36,10 @@
 		//TODO: DNA3 clown_block
 /*
 		if ((CLUMSY in user.mutations) && prob(50))
-			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
-			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
+			user.visible_message(
+				SPAN_DANG("\The [user] accidentally cuts \himself with \the [src]."),
+				SPAN_DANG("You accidentally cut yourself with \the [src].")
+			)
 			user.take_organ_damage(5,5)
 */
 		deactivate(user)
@@ -60,8 +62,10 @@
 /obj/item/weapon/melee/energy/suicide_act(mob/user)
 	var/tempgender = "[user.gender == MALE ? "he's" : user.gender == FEMALE ? "she's" : "they are"]"
 	if (active)
-		viewers(user) << pick("<span class='danger'>\The [user] is slitting \his stomach open with \the [src]! It looks like [tempgender] trying to commit seppuku.</span>", \
-			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide.</span>")
+		viewers(user) << pick(\
+			SPAN_DANG("\The [user] is slitting \his stomach open with \the [src]! It looks like [tempgender] trying to commit seppuku."),
+			SPAN_DANG("\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide."),
+		)
 		return (BRUTELOSS|FIRELOSS)
 
 /*
@@ -172,7 +176,7 @@
 		return 0
 
 	if(prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANG("\The [user] parries [attack_text] with \the [src]!"))
 
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)

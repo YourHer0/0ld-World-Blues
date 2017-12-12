@@ -183,9 +183,9 @@
 				break
 
 	if(total_transferred)
-		user << "<font color='blue'>You transfer [total_transferred] units into the suit reservoir.</font>"
+		user << SPAN_NOTE("You transfer [total_transferred] units into the suit reservoir.")
 	else
-		user << "<span class='danger'>None of the reagents seem suitable.</span>"
+		user << SPAN_DANG("None of the reagents seem suitable.")
 	return 1
 
 /obj/item/rig_module/chem_dispenser/engage(atom/target)
@@ -196,7 +196,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		H << "<span class='danger'>You have not selected a chemical type.</span>"
+		H << SPAN_DANG("You have not selected a chemical type.")
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -206,7 +206,7 @@
 
 	var/chems_to_use = 10
 	if(charge.charges <= 0)
-		H << "<span class='danger'>Insufficient chems!</span>"
+		H << SPAN_DANG("Insufficient chems!")
 		return 0
 	else if(charge.charges < chems_to_use)
 		chems_to_use = charge.charges
@@ -221,8 +221,8 @@
 		target_mob = H
 
 	if(target_mob != H)
-		H << "<span class='danger'>You inject [target_mob] with [chems_to_use] unit\s of [charge.display_name].</span>"
-	target_mob << "<span class='danger'>You feel a rushing in your veins as [chems_to_use] unit\s of [charge.display_name] [chems_to_use == 1 ? "is" : "are"] injected.</span>"
+		H << SPAN_DANG("You inject [target_mob] with [chems_to_use] unit\s of [charge.display_name].")
+	target_mob << SPAN_DANG("You feel a rushing in your veins as [chems_to_use] unit\s of [charge.display_name] [chems_to_use == 1 ? "is" : "are"] injected.")
 	target_mob.reagents.add_reagent(charge.display_name, chems_to_use)
 
 	charge.charges -= chems_to_use

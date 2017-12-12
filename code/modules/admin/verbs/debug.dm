@@ -64,7 +64,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 		if(targetselected)
 			if(!target)
-				usr << "<span class='danger'>Your target no longer exists.</span>"
+				usr << SPAN_DANG("Your target no longer exists.")
 				return
 			if(!hascall(target,procname))
 				usr << "<font color='red'>Error: callproc(): target has no such call [procname].</font>"
@@ -81,7 +81,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			// Procs have the strange property that text2path will return non-null, but ispath() will return false.
 			var/path = text2path(procname)
 			if(!path || ispath(path))
-				usr << "<span class='danger'>Invalid proc [procname]</span>"
+				usr << SPAN_DANG("Invalid proc [procname]")
 				return
 
 		var/argnum = input("Number of arguments","Number:",0) as num|null

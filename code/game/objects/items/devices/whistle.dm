@@ -43,7 +43,7 @@ obj/item/device/hailer/attack_self(mob/living/carbon/user as mob)
 			user.audible_message("<span class='warning'>[user]'s [name] gurgles something indecipherable and deeply offensive.</span>", "<span class='warning'>\The [user] holds up \the [name].</span>")
 			insults--
 		else
-			user << "<span class='danger'>*BZZZZZZZZT*</span>"
+			user << SPAN_DANG("*BZZZZZZZZT*")
 
 	spamcheck = 1
 	spawn(20)
@@ -51,7 +51,7 @@ obj/item/device/hailer/attack_self(mob/living/carbon/user as mob)
 
 /obj/item/device/hailer/emag_act(var/remaining_charges, var/mob/user)
 	if(isnull(insults))
-		user << "<span class='danger'>You overload \the [src]'s voice synthesizer.</span>"
+		user << SPAN_DANG("You overload \the [src]'s voice synthesizer.")
 		insults = rand(1, 3)//to prevent dickflooding
 		return 1
 	else

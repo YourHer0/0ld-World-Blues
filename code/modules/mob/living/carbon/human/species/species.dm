@@ -206,10 +206,10 @@
 	switch(msg_type)
 		if("cold")
 			if(!covered)
-				H << "<span class='danger'>[pick(cold_discomfort_strings)]</span>"
+				H << SPAN_DANG("[pick(cold_discomfort_strings)]")
 		if("heat")
 			if(covered)
-				H << "<span class='danger'>[pick(heat_discomfort_strings)]</span>"
+				H << SPAN_DANG("[pick(heat_discomfort_strings)]")
 
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H, var/datum/job/J)
 	var/gear = /obj/item/storage/box/survival

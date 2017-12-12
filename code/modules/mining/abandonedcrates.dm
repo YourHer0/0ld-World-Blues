@@ -165,7 +165,7 @@
 		visible_message("<span class='warning'>A red light on \the [src]'s control panel flashes briefly.</span>")
 		attempts--
 		if (attempts == 0)
-			user << "<span class='danger'>The crate's anti-tamper system activates!</span>"
+			user << SPAN_DANG("The crate's anti-tamper system activates!")
 			var/turf/T = get_turf(src.loc)
 			explosion(T, 0, 0, 1, 2)
 			qdel(src)

@@ -24,13 +24,13 @@
 	if(!changeling)	return 0
 
 	if(is_muzzled())
-		src << "<span class='danger'>Mmmf mrrfff!</span>"
+		src << SPAN_DANG("Mmmf mrrfff!")
 		return 0
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.silent)
-			src << "<span class='danger'>You can't speak!</span>"
+			src << SPAN_DANG("You can't speak!")
 			return 0
 
 	changeling.chem_charges -= 20
@@ -77,13 +77,13 @@
 	if(!changeling)	return 0
 
 	if(is_muzzled())
-		src << "<span class='danger'>Mmmf mrrfff!</span>"
+		src << SPAN_DANG("Mmmf mrrfff!")
 		return 0
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.silent)
-			src << "<span class='danger'>You can't speak!</span>"
+			src << SPAN_DANG("You can't speak!")
 			return 0
 
 	changeling.chem_charges -= 20

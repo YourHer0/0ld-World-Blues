@@ -30,15 +30,15 @@
 	set src = usr
 
 	if(stat == DEAD)
-		usr << "<span class='danger'>You are dead; it is too late for that.</span>"
+		usr << SPAN_DANG("You are dead; it is too late for that.")
 		return
 
 	if(!seed)
-		usr << "<span class='danger'>You are sterile!</span>"
+		usr << SPAN_DANG("You are sterile!")
 		return
 
 	if(world.time < harvest_time + min_explode_time)
-		usr << "<span class='danger'>You are not mature enough for that.</span>"
+		usr << SPAN_DANG("You are not mature enough for that.")
 		return
 
 	spore_explode()

@@ -18,11 +18,11 @@
 	if(docking_controller_tag_station)
 		docking_controller_station = locate(docking_controller_tag_station)
 		//if(!istype(docking_controller_station))
-			//world << "<span class='danger'>warning: shuttle with docking tag [docking_controller_station] could not find it's controller!</span>"
+			//world << SPAN_DANG("warning: shuttle with docking tag [docking_controller_station] could not find it's controller!")
 	if(docking_controller_tag_offsite)
 		docking_controller_offsite = locate(docking_controller_tag_offsite)
 		//if(!istype(docking_controller_offsite))
-			//world << "<span class='danger'>warning: shuttle with docking tag [docking_controller_offsite] could not find it's controller!</span>"
+			//world << SPAN_DANG("warning: shuttle with docking tag [docking_controller_offsite] could not find it's controller!")
 	if (!location)
 		docking_controller = docking_controller_station
 	else
@@ -93,12 +93,12 @@
 		if (!location)	//just arrived home
 			for(var/turf/T in get_area_turfs(destination))
 				var/mob/M = locate(/mob) in T
-				M << "<span class='danger'>You have arrived at Central Command. Operation has ended!</span>"
+				M << SPAN_DANG("You have arrived at Central Command. Operation has ended!")
 		else	//just left for the station
 			launch_mauraders()
 			for(var/turf/T in get_area_turfs(destination))
 				var/mob/M = locate(/mob) in T
-				M << "<span class='danger'>You have arrived at [station_name]. Commence operation!</span>"
+				M << SPAN_DANG("You have arrived at [station_name]. Commence operation!")
 
 				var/obj/machinery/light/small/readylight/light = locate() in T
 				if(light) light.set_state(1)

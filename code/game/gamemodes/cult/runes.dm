@@ -29,7 +29,7 @@ var/list/sacrificed = list()
 					allrunesloc.len = index
 					allrunesloc[index] = R.loc
 			if(index >= 5)
-				user << "<span class='danger'>You feel pain, as rune disappears in reality shift caused by too much wear of space-time fabric.</span>"
+				user << SPAN_DANG("You feel pain, as rune disappears in reality shift caused by too much wear of space-time fabric.")
 				if (isliving(user))
 					user.take_overall_damage(5, 0)
 				qdel(src)
@@ -38,9 +38,11 @@ var/list/sacrificed = list()
 					user.say("Sas[pick("'","`")]so c'arta forbici!")//Only you can stop auto-muting
 				else
 					user.whisper("Sas[pick("'","`")]so c'arta forbici!")
-				user.visible_message("<span class='danger'>[user] disappears in a flash of red light!</span>", \
-				"<span class='danger'>You feel as your body gets dragged through the dimension of Nar-Sie!</span>", \
-				"<span class='danger'>You hear a sickening crunch and sloshing of viscera.</span>")
+				user.visible_message(
+					SPAN_DANG("[user] disappears in a flash of red light!"),
+					SPAN_DANG("You feel as your body gets dragged through the dimension of Nar-Sie!"),
+					SPAN_DANG("You hear a sickening crunch and sloshing of viscera.")
+				)
 				user.loc = allrunesloc[rand(1,index)]
 				return
 			if(istype(src,/obj/effect/rune))
@@ -66,7 +68,7 @@ var/list/sacrificed = list()
 					IP = R
 					runecount++
 			if(runecount >= 2)
-				user << "<span class='danger'>You feel pain, as rune disappears in reality shift caused by too much wear of space-time fabric.</span>"
+				user << SPAN_DANG("You feel pain, as rune disappears in reality shift caused by too much wear of space-time fabric.")
 				if (isliving(user))
 					user.take_overall_damage(5, 0)
 				qdel(src)
@@ -121,7 +123,7 @@ var/list/sacrificed = list()
 				if(!converting.len)
 					fizzle()
 				else
-					usr << "<span class='danger'>You sense that the power of the dark one is already working away at them.</span>"
+					usr << SPAN_DANG("You sense that the power of the dark one is already working away at them.")
 				return
 
 			usr.say("Mah[pick("'","`")]weyh pleggh at e'ntrath!")
@@ -165,7 +167,11 @@ var/list/sacrificed = list()
 				if (target.species && (target.species.flags & NO_PAIN))
 					target.visible_message("<span class='warning'>The markings below [target] glow a bloody red.</span>")
 				else
-					target.visible_message("<span class='warning'>[target] writhes in pain as the markings below \him glow a bloody red.</span>", "<span class='danger'>AAAAAAHHHH!</span>", "<span class='warning'>You hear an anguished scream.</span>")
+					target.visible_message(
+						SPAN_WARN("[target] writhes in pain as the markings below \him glow a bloody red."),
+						SPAN_DANG("AAAAAAHHHH!"),
+						SPAN_WARN("You hear an anguished scream.")
+					)
 
 				if(!waiting_for_input[target]) //so we don't spam them with dialogs if they hesitate
 					waiting_for_input[target] = 1
@@ -173,7 +179,7 @@ var/list/sacrificed = list()
 					if(!cult.can_become_antag(target.mind) || jobban_isbanned(target, "cultist"))//putting jobban check here because is_convertable uses mind as argument
 						//waiting_for_input ensures this is only shown once, so they basically auto-resist from here on out. They still need to find a way to get off the freaking rune if they don't want to burn to death, though.
 						target << "<span class='cult'>Your blood pulses. Your head throbs. The world goes red. All at once you are aware of a horrible, horrible truth. The veil of reality has been ripped away and in the festering wound left behind something sinister takes root.</span>"
-						target << "<span class='danger'>And you were able to force it out of your mind. You now know the truth, there's something horrible out there, stop it and its minions at all costs.</span>"
+						target << SPAN_DANG("And you were able to force it out of your mind. You now know the truth, there's something horrible out there, stop it and its minions at all costs.")
 
 					else spawn()
 						var/choice = alert(target,"Do you want to join the cult?","Submit to Nar'Sie","Resist","Submit")
@@ -264,16 +270,20 @@ var/list/sacrificed = list()
 			if(!drain)
 				return fizzle()
 			usr.say ("Yu[pick("'","`")]gular faras desdae. Havas mithum javara. Umathar uf'kal thenar!")
-			usr.visible_message("<span class='danger'>Blood flows from the rune into [usr]!</span>", \
-			"<span class='danger'>The blood starts flowing from the rune and into your frail mortal body. You feel... empowered.</span>", \
-			"<span class='warning'>You hear a liquid flowing.</span>")
+			usr.visible_message(
+				SPAN_DANG("Blood flows from the rune into [usr]!"),
+				SPAN_DANG("The blood starts flowing from the rune and into your frail mortal body. You feel... empowered."),
+				SPAN_WARN("You hear a liquid flowing.")
+			)
 			var/mob/living/user = usr
 			if(user.bhunger)
 				user.bhunger = max(user.bhunger-2*drain,0)
 			if(drain>=50)
-				user.visible_message("<span class='danger'>[user]'s eyes give off eerie red glow!</span>", \
-				"<span class='danger'>...but it wasn't nearly enough. You crave, crave for more. The hunger consumes you from within.</span>", \
-				"<span class='warning'>You hear a heartbeat.</span>")
+				user.visible_message(
+					SPAN_DANG("[user]'s eyes give off eerie red glow!"),
+					SPAN_DANG("...but it wasn't nearly enough. You crave, crave for more. The hunger consumes you from within."),
+					"<span class='warning'>You hear a heartbeat.</span>"
+				)
 				user.bhunger += drain
 				src = user
 				spawn()
@@ -299,7 +309,7 @@ var/list/sacrificed = list()
 			if(usr.loc==src.loc)
 				if(usr.seer==1)
 					usr.say("Rash'tla sektath mal[pick("'","`")]zua. Zasan therium viortia.")
-					usr << "<span class='danger'>The world beyond fades from your vision.</span>"
+					usr << SPAN_DANG("The world beyond fades from your vision.")
 					usr.see_invisible = SEE_INVISIBLE_LIVING
 					usr.seer = 0
 				else if(usr.see_invisible!=SEE_INVISIBLE_LIVING)
@@ -374,9 +384,11 @@ var/list/sacrificed = list()
 			corpse_to_raise.visible_message("<span class='warning'>[corpse_to_raise]'s eyes glow with a faint red as he stands up, slowly starting to breathe again.</span>", \
 			"<span class='warning'>Life... I'm alive again...</span>", \
 			"<span class='warning'>You hear a faint, slightly familiar whisper.</span>")
-			body_to_sacrifice.visible_message("<span class='danger'>[body_to_sacrifice] is torn apart, a black smoke swiftly dissipating from \his remains!</span>", \
-			"<span class='danger'>You feel as your blood boils, tearing you apart.</span>", \
-			"<span class='danger'>You hear a thousand voices, all crying in pain.</span>")
+			body_to_sacrifice.visible_message(
+				SPAN_DANG("[body_to_sacrifice] is torn apart, a black smoke swiftly dissipating from \his remains!"),
+				SPAN_DANG("You feel as your blood boils, tearing you apart."),
+				SPAN_DANG("You hear a thousand voices, all crying in pain.")
+			)
 			body_to_sacrifice.gib()
 
 //			if(ticker.mode.name == "cult")
@@ -492,9 +504,11 @@ var/list/sacrificed = list()
 				user.take_organ_damage(1, 0)
 				sleep(30)
 			if(D)
-				D.visible_message("<span class='danger'>[D] slowly dissipates into dust and bones.</span>", \
-				"<span class='danger'>You feel pain, as bonds formed between your soul and this homunculus break.</span>", \
-				"<span class='warning'>You hear faint rustle.</span>")
+				D.visible_message(
+					SPAN_DANG("[D] slowly dissipates into dust and bones."),
+					SPAN_DANG("You feel pain, as bonds formed between your soul and this homunculus break."),
+					SPAN_WARN("You hear faint rustle.")
+				)
 				D.dust()
 			return
 
@@ -591,9 +605,11 @@ var/list/sacrificed = list()
 			user.say("Uhrast ka'hfa heldsagen ver[pick("'","`")]lot!")
 			user.take_overall_damage(200, 0)
 			runedec+=10
-			user.visible_message("<span class='danger'>\The [user] keels over dead, \his blood glowing blue as it escapes \his body and dissipates into thin air.</span>", \
-			"<span class='danger'>In the last moment of your humble life, you feel an immense pain as fabric of reality mends... with your blood.</span>", \
-			"<span class='warning'>You hear faint rustle.</span>")
+			user.visible_message(
+				SPAN_DANG("\The [user] keels over dead, \his blood glowing blue as it escapes \his body and dissipates into thin air."),
+				SPAN_DANG("In the last moment of your humble life, you feel an immense pain as fabric of reality mends... with your blood."),
+				SPAN_WARN("You hear faint rustle.")
+			)
 			for(,user.stat==DEAD)
 				sleep(600)
 				if (!user)
@@ -803,9 +819,9 @@ var/list/sacrificed = list()
 			var/mob/living/user = usr
 			user.take_organ_damage(2, 0)
 			if(src.density)
-				usr << "<span class='danger'>Your blood flows into the rune, and you feel that the very space over the rune thickens.</span>"
+				usr << SPAN_DANG("Your blood flows into the rune, and you feel that the very space over the rune thickens.")
 			else
-				usr << "<span class='danger'>Your blood flows into the rune, and you feel as the rune releases its grasp on space.</span>"
+				usr << SPAN_DANG("Your blood flows into the rune, and you feel as the rune releases its grasp on space.")
 			return
 
 /////////////////////////////////////////EIGHTTEENTH RUNE
@@ -1004,7 +1020,7 @@ var/list/sacrificed = list()
 					if(N)
 						continue
 					M.take_overall_damage(51,51)
-					M << "<span class='danger'>Your blood boils!</span>"
+					M << SPAN_DANG("Your blood boils!")
 					victims += M
 					if(prob(5))
 						spawn(5)
@@ -1036,16 +1052,16 @@ var/list/sacrificed = list()
 						for(var/mob/living/M in orange(2,R))
 							M.take_overall_damage(0,15)
 							if (R.invisibility>M.see_invisible)
-								M << "<span class='danger'>Aargh it burns!</span>"
+								M << SPAN_DANG("Aargh it burns!")
 							else
-								M << "<span class='danger'>Rune suddenly ignites, burning you!</span>"
+								M << SPAN_DANG("Rune suddenly ignites, burning you!")
 							var/turf/T = get_turf(R)
 							T.hotspot_expose(700,125)
 				for(var/obj/effect/decal/cleanable/blood/B in world)
 					if(B.blood_DNA == src.blood_DNA)
 						for(var/mob/living/M in orange(1,B))
 							M.take_overall_damage(0,5)
-							M << "<span class='danger'>Blood suddenly ignites, burning you!</span>"
+							M << SPAN_DANG("Blood suddenly ignites, burning you!")
 							var/turf/T = get_turf(B)
 							T.hotspot_expose(700,125)
 							qdel(B)
@@ -1064,13 +1080,13 @@ var/list/sacrificed = list()
 							C.stuttering = 1
 						C.Weaken(1)
 						C.Stun(1)
-						C.show_message("<span class='danger'>The rune explodes in a bright flash.</span>", 3)
+						C.show_message(SPAN_DANG("The rune explodes in a bright flash."), 3)
 						admin_attack_log(usr, C, "Used a stun rune.", "Was victim of a stun rune.", "used a stun rune on")
 
 					else if(issilicon(L))
 						var/mob/living/silicon/S = L
 						S.Weaken(5)
-						S.show_message("<span class='danger'>BZZZT... The rune has exploded in a bright flash.</span>", 3)
+						S.show_message(SPAN_DANG("BZZZT... The rune has exploded in a bright flash."), 3)
 						admin_attack_log(usr, S, "Used a stun rune.", "Was victim of a stun rune.", "used a stun rune on")
 				qdel(src)
 			else                        ///When invoked as talisman, stun and mute the target mob.

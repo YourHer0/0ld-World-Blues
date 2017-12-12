@@ -224,7 +224,7 @@
 				H << SPAN_NOTE("<font size =3><B>Your loyalty implant has been deactivated.</B></font>")
 				log_admin("[key_name_admin(usr)] has de-loyalty implanted [current].", current)
 			if("add")
-				H << "<span class='danger'><font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font></span>"
+				H << SPAN_DANG("<font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font>")
 				H.implant_loyalty(H, override = TRUE)
 				log_admin("[key_name_admin(usr)] has loyalty implanted [current].", current)
 			else

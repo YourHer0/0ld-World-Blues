@@ -201,31 +201,39 @@
 		var/obj/item/weapon/weldingtool/W = C
 		if(W.remove_fuel(0, user))
 			blocked = !blocked
-			user.visible_message("<span class='danger'>\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W].</span>",\
-			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
-			"You hear something being welded.")
+			user.visible_message(
+				SPAN_DANG("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),
+				"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",
+				"You hear something being welded."
+			)
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
 			update_icon()
 			return
 
 	if(density && istype(C, /obj/item/weapon/screwdriver))
 		hatch_open = !hatch_open
-		user.visible_message("<span class='danger'>[user] has [hatch_open ? "opened" : "closed"] \the [src] maintenance hatch.</span>",
-									"You have [hatch_open ? "opened" : "closed"] the [src] maintenance hatch.")
+		user.visible_message(
+			SPAN_DANG("[user] has [hatch_open ? "opened" : "closed"] \the [src] maintenance hatch."),
+			"You have [hatch_open ? "opened" : "closed"] the [src] maintenance hatch."
+		)
 		update_icon()
 		return
 
 	if(blocked && istype(C, /obj/item/weapon/crowbar) && !repairing)
 		if(!hatch_open)
-			user << "<span class='danger'>You must open the maintenance hatch first!</span>"
+			user << SPAN_DANG("You must open the maintenance hatch first!")
 		else
-			user.visible_message("<span class='danger'>[user] is removing the electronics from \the [src].</span>",
-									"You start to remove the electronics from [src].")
+			user.visible_message(
+				SPAN_DANG("[user] is removing the electronics from \the [src]."),
+				"You start to remove the electronics from [src]."
+			)
 			if(do_after(user,30))
 				if(blocked && density && hatch_open)
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
-					user.visible_message("<span class='danger'>[user] has removed the electronics from \the [src].</span>",
-										"You have removed the electronics from [src].")
+					user.visible_message(
+						SPAN_DANG("[user] has removed the electronics from \the [src]."),
+						"You have removed the electronics from [src]."
+					)
 
 					if (stat & BROKEN)
 						new /obj/item/weapon/circuitboard/broken(src.loc)
@@ -241,7 +249,7 @@
 		return
 
 	if(blocked)
-		user << "<span class='danger'>\The [src] is welded shut!</span>"
+		user << SPAN_DANG("\The [src] is welded shut!")
 		return
 
 	if(C.pry == 1)
@@ -249,9 +257,11 @@
 			return
 
 		if(blocked && istype(C, /obj/item/weapon/crowbar))
-			user.visible_message("<span class='danger'>\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!</span>",\
-			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
-			"You hear someone struggle and metal straining.")
+			user.visible_message(
+				SPAN_DANG("\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!"),
+				"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",
+				"You hear someone struggle and metal straining."
+			)
 			return
 
 		if(istype(C,/obj/item/weapon/material/twohanded/fireaxe))
@@ -259,19 +269,25 @@
 			if(!F.wielded)
 				return
 
-		user.visible_message("<span class='danger'>\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\
-				"You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!",\
-				"You hear metal strain.")
+		user.visible_message(
+			SPAN_DANG("\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!"),
+			"You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!",
+			"You hear metal strain."
+		)
 		if(do_after(user,30))
 			if(istype(C, /obj/item/weapon/crowbar))
 				if(stat & (BROKEN|NOPOWER) || !density)
-					user.visible_message("<span class='danger'>\The [user] forces \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\
-					"You force \the [src] [density ? "open" : "closed"] with \the [C]!",\
-					"You hear metal strain, and a door [density ? "open" : "close"].")
+					user.visible_message(
+						SPAN_DANG("\The [user] forces \the [src] [density ? "open" : "closed"] with \a [C]!"),
+						"You force \the [src] [density ? "open" : "closed"] with \the [C]!",
+						"You hear metal strain, and a door [density ? "open" : "close"]."
+					)
 			else
-				user.visible_message("<span class='danger'>\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!</span>",\
-					"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
-					"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
+				user.visible_message(
+					SPAN_DANG("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),
+					"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",
+					"You hear metal strain and groan, and a door [density ? "opening" : "closing"]."
+				)
 			if(density)
 				spawn(0)
 					open(1)

@@ -495,24 +495,24 @@ var/list/global/slot_flags_enumeration = list(
 		var/obj/item/organ/internal/eyes/eyes = H.internal_organs_by_name[O_EYES]
 
 		if(H != user)
-			for(var/mob/O in (viewers(M) - user - M))
-				O.show_message("<span class='danger'>[M] has been stabbed in the eye with [src] by [user].</span>", 1)
-			M << "<span class='danger'>[user] stabs you in the eye with [src]!</span>"
-			user << "<span class='danger'>You stab [M] in the eye with [src]!</span>"
+			user.visible_message(
+				SPAN_DANG("[M] has been stabbed in the eye with [src] by [user]."),
+				SPAN_DANG("You stab [M] in the eye with [src]!")
+			)
 		else
-			user.visible_message( \
-				"<span class='danger'>[user] has stabbed themself with [src]!</span>", \
-				"<span class='danger'>You stab yourself in the eyes with [src]!</span>" \
+			user.visible_message(
+				SPAN_DANG("[user] has stabbed themself with [src]!"),
+				SPAN_DANG("You stab yourself in the eyes with [src]!")
 			)
 
 		eyes.damage += rand(3,4)
 		if(eyes.damage >= eyes.min_bruised_damage)
 			if(M.stat != DEAD)
-				if(eyes.robotic <= 1) //robot eyes bleeding might be a bit silly
-					M << "<span class='danger'>Your eyes start to bleed profusely!</span>"
+				if(eyes.robotic < ORGAN_ROBOT) //robot eyes bleeding might be a bit silly
+					M << SPAN_DANG("Your eyes start to bleed profusely!")
 			if(prob(50))
 				if(!M.stat)
-					M << "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>"
+					M << SPAN_WARN("You drop what you're holding and clutch at your eyes!")
 					M.drop_active_hand()
 				M.eye_blurry += 10
 				M.Paralyse(1)

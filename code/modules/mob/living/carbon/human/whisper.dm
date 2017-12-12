@@ -37,7 +37,7 @@
 /mob/living/carbon/human/proc/whisper_say(var/message, var/datum/language/speaking = null, var/alt_name="", var/verb="whispers")
 
 	if(is_muzzled())
-		src << "<span class='danger'>You're muzzled and cannot speak!</span>"
+		src << SPAN_DANG("You're muzzled and cannot speak!")
 		return
 
 	var/message_range = 1

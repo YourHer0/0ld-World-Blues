@@ -42,7 +42,7 @@
 		return 0
 
 	if(accepted_item.charges >= 5)
-		user << "<span class='danger'>Another grenade of that type will not fit into the module.</span>"
+		user << SPAN_DANG("Another grenade of that type will not fit into the module.")
 		return 0
 
 	user << "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>"
@@ -62,7 +62,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		H << "<span class='danger'>You have not selected a grenade type.</span>"
+		H << SPAN_DANG("You have not selected a grenade type.")
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -71,7 +71,7 @@
 		return 0
 
 	if(charge.charges <= 0)
-		H << "<span class='danger'>Insufficient grenades!</span>"
+		H << SPAN_DANG("Insufficient grenades!")
 		return 0
 
 	charge.charges--
@@ -178,7 +178,7 @@
 	var/mob/living/M = holder.wearer
 
 	if(M.l_hand && M.r_hand)
-		M << "<span class='danger'>Your hands are full.</span>"
+		M << SPAN_DANG("Your hands are full.")
 		deactivate()
 		return
 
@@ -227,7 +227,7 @@
 	if(target)
 		var/obj/item/firing = new fabrication_type()
 		firing.forceMove(get_turf(src))
-		H.visible_message("<span class='danger'>[H] launches \a [firing]!</span>")
+		H.visible_message(SPAN_DANG("[H] launches \a [firing]!"))
 		firing.throw_at(target,fire_force,fire_distance)
 	else
 		if(H.l_hand && H.r_hand)

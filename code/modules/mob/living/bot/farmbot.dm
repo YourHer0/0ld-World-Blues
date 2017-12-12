@@ -231,16 +231,16 @@
 				flick("farmbot_hoe", src)
 				do_attack_animation(A)
 				if(prob(50))
-					visible_message("<span class='danger'>[src] swings wildly at [A] with a minihoe, missing completely!</span>")
+					visible_message(SPAN_DANG("[src] swings wildly at [A] with a minihoe, missing completely!"))
 					return
 				var/t = pick("slashed", "sliced", "cut", "clawed")
 				A.attack_generic(src, 5, t)
 			if("water")
 				flick("farmbot_water", src)
-				visible_message("<span class='danger'>[src] splashes [A] with water!</span>") // That's it. RP effect.
+				visible_message(SPAN_DANG("[src] splashes [A] with water!")) // That's it. RP effect.
 
 /mob/living/bot/farmbot/explode()
-	visible_message("<span class='danger'>[src] blows apart!</span>")
+	visible_message(SPAN_DANG("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/weapon/material/minihoe(Tsec)

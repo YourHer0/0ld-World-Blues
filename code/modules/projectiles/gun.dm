@@ -102,7 +102,7 @@
 	var/mob/living/M = user
 
 	if(HULK in M.mutations)
-		M << "<span class='danger'>Your fingers are much too large for the trigger guard!</span>"
+		M << SPAN_DANG("Your fingers are much too large for the trigger guard!")
 		return 0
 	*/
 	//TODO: DNA3 clown_block
@@ -113,9 +113,9 @@
 			if(process_projectile(P, user, user, pick(BP_L_FOOT, BP_R_FOOT)))
 				handle_post_fire(user, user)
 				user.visible_message(
-					"<span class='danger'>[user] shoots \himself in the foot with \the [src]!</span>",
-					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
-					)
+					SPAN_DANG("[user] shoots \himself in the foot with \the [src]!"),
+					SPAN_DANG("You shoot yourself in the foot with \the [src]!")
+				)
 				M.drop_from_inventory(src)
 		else
 			handle_click_empty(user)
@@ -228,7 +228,7 @@
 //called if there was no projectile to shoot
 /obj/item/weapon/gun/proc/handle_click_empty(mob/user)
 	if (user)
-		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
+		user.visible_message("*click click*", SPAN_DANG("*click*"))
 	else
 		src.visible_message("*click click*")
 	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
@@ -248,7 +248,7 @@
 			)
 		else
 			user.visible_message(
-				"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""]!</span>",
+				SPAN_DANG("\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""]!"),
 				"<span class='warning'>You fire \the [src]!</span>",
 				"You hear a [fire_sound_text]!"
 				)

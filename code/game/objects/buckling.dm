@@ -78,8 +78,8 @@
 				SPAN_NOTE("You hear metal clanking."))
 		else
 			M.visible_message(\
-				"<span class='danger'>[M.name] is buckled to [src] by [user.name]!</span>",\
-				"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
+				SPAN_DANG("[M.name] is buckled to [src] by [user.name]!"),\
+				SPAN_DANG("You are buckled to [src] by [user.name]!"),\
 				SPAN_NOTE("You hear metal clanking."))
 
 /obj/proc/user_unbuckle_mob(mob/user)

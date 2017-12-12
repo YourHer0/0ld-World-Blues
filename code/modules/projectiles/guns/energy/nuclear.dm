@@ -64,7 +64,7 @@
 	else
 		for (var/mob/living/M in range(rand(1,4),src)) //Big failure, TIME FOR RADIATION BITCHES
 			if (src in M.contents)
-				M << "<span class='danger'>Your gun's reactor overloads!</span>"
+				M << SPAN_DANG("Your gun's reactor overloads!")
 			M << "<span class='warning'>You feel a wave of heat wash over you.</span>"
 			M.apply_effect(300, IRRADIATE)
 		crit_fail = 1 //break the gun so it stops recharging

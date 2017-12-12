@@ -218,9 +218,9 @@
 			if(chained)
 				overlays = "chain_s9"
 			if(growing)
-				visible_message("<span class='danger'><font size='2'>The singularity has grown out of control!</font></span>")
+				visible_message(SPAN_DANG("<font size='2'>The singularity has grown out of control!</font>"))
 			else
-				visible_message("<span class='warning'>The singularity miraculously reduces in size and loses its supermatter properties.</span>")
+				visible_message(SPAN_WARN("The singularity miraculously reduces in size and loses its supermatter properties."))
 		if(STAGE_SUPER)//SUPERSINGULO
 			name = "super gravitational singularity"
 			desc = "A gravitational singularity with the properties of supermatter. <b>It has the power to destroy worlds.</b>"
@@ -435,14 +435,13 @@
 			if (ishuman(M))
 				var/mob/living/carbon/human/H = M
 				if(istype(H.glasses,/obj/item/clothing/glasses/meson) && current_size != 11)
-					H << "<span class=\"notice\">You look directly into The [src.name], good thing you had your protective eyewear on!</span>"
+					H << SPAN_NOTE("You look directly into The [src.name], good thing you had your protective eyewear on!")
 					return
 				else
-					H << "<span class=\"warning\">You look directly into The [src.name], but your eyewear does absolutely nothing to protect you from it!</span>"
-		M << "<span class='danger'>You look directly into The [src.name] and feel [current_size == 11 ? "helpless" : "weak"].</span>"
+					H << SPAN_WARN("You look directly into The [src.name], but your eyewear does absolutely nothing to protect you from it!")
+		M << SPAN_DANG("You look directly into The [src.name] and feel [current_size == 11 ? "helpless" : "weak"].")
 		M.apply_effect(3, STUN)
-		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='danger'>[] stares blankly at The []!</span>", M, src), 1)
+		M.visible_message(SPAN_DANG("[M] stares blankly at The [src]!"))
 
 /obj/singularity/proc/emp_area()
 	if(current_size != 11)

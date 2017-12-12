@@ -18,7 +18,7 @@
 	var/mob/living/carbon/C = src
 
 	if(changeling.max_geneticpoints < 0) //Absorbed by another ling
-		src << "<span class='danger'>We have no genomes, not even our own, and cannot regenerate.</span>"
+		src << SPAN_DANG("We have no genomes, not even our own, and cannot regenerate.")
 		return 0
 
 	if(!C.stat && alert("Are we sure we wish to regenerate?  We will appear to be dead while doing so.","Revival","Yes","No") == "No")

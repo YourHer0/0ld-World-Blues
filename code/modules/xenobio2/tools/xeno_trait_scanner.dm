@@ -64,7 +64,7 @@
 		prod_reagents = P.reagents
 
 	if(!trait_info)
-		user << "<span class='danger'>[src] can tell you nothing about \the [target].</span>"
+		user << SPAN_DANG("[src] can tell you nothing about \the [target].")
 		return
 
 	form_title = "[targetName]"

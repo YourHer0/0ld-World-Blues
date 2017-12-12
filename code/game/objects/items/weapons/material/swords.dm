@@ -25,13 +25,13 @@
 		return 0
 
 	if(prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		user.visible_message(SPAN_DANG("\The [user] parries [attack_text] with \the [src]!"))
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
 
 /obj/item/weapon/material/sword/suicide_act(mob/user)
-	viewers(user) << "<span class='danger'>[user] is falling on the [src.name]! It looks like \he's trying to commit suicide.</span>"
+	viewers(user) << SPAN_DANG("[user] is falling on the [src.name]! It looks like \he's trying to commit suicide.")
 	return(BRUTELOSS)
 
 /obj/item/weapon/material/sword/katana
@@ -42,5 +42,5 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 
 /obj/item/weapon/material/sword/katana/suicide_act(mob/user)
-	viewers(user) << "<span class='danger'>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</span>"
+	viewers(user) << SPAN_DANG("[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.")
 	return(BRUTELOSS)

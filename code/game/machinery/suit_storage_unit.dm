@@ -680,11 +680,11 @@
 	else if(istype(I,/obj/item/clothing/head/helmet/space) && !istype(I, /obj/item/clothing/head/helmet/space/rig))
 
 		if(locked)
-			user << "<span class='danger'>The suit cycler is locked.</span>"
+			user << SPAN_DANG("The suit cycler is locked.")
 			return
 
 		if(helmet)
-			user << "<span class='danger'>The cycler already contains a helmet.</span>"
+			user << SPAN_DANG("The cycler already contains a helmet.")
 			return
 
 		user << "You fit \the [I] into the suit cycler."
@@ -698,11 +698,11 @@
 	else if(istype(I,/obj/item/clothing/suit/space/void))
 
 		if(locked)
-			user << "<span class='danger'>The suit cycler is locked.</span>"
+			user << SPAN_DANG("The suit cycler is locked.")
 			return
 
 		if(suit)
-			user << "<span class='danger'>The cycler already contains a voidsuit.</span>"
+			user << SPAN_DANG("The cycler already contains a voidsuit.")
 			return
 
 		user << "You fit \the [I] into the suit cycler."
@@ -717,11 +717,11 @@
 
 /obj/machinery/suit_cycler/emag_act(var/remaining_charges, var/mob/user)
 	if(emagged)
-		user << "<span class='danger'>The cycler has already been subverted.</span>"
+		user << SPAN_DANG("The cycler has already been subverted.")
 		return
 
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
-	user << "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>"
+	user << SPAN_DANG("You run the sequencer across the interface, corrupting the operating protocols.")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$")
 	species = list(SPECIES_HUMAN,SPECIES_TAJARA,SPECIES_SKRELL,SPECIES_UNATHI)
 
@@ -830,12 +830,12 @@
 			locked = !locked
 			usr << "You [locked ? "" : "un"]lock \the [src]."
 		else
-			usr << "<span class='danger'>Access denied.</span>"
+			usr << SPAN_DANG("Access denied.")
 
 	else if(href_list["begin_decontamination"])
 
 		if(safeties && occupant)
-			usr << "<span class='danger'>The cycler has detected an occupant. Please remove the occupant before commencing the decontamination cycle.</span>"
+			usr << SPAN_DANG("The cycler has detected an occupant. Please remove the occupant before commencing the decontamination cycle.")
 			return
 
 		active = 1

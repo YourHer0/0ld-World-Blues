@@ -17,7 +17,7 @@
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_GLASS = 50)
 
 	suicide_act(mob/user)
-		viewers(user) << "<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like \he's trying to commit suicide.</span>"
+		viewers(user) << SPAN_DANG("\The [user] is licking the electrodes of \the [src]! It looks like \he's trying to commit suicide.")
 		return (FIRELOSS)
 
 //currently only used by energy-type guns, that may change in the future.

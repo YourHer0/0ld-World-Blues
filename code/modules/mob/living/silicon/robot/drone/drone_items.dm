@@ -29,7 +29,10 @@
 
 	for(var/mob/M in T)
 		if(istype(M,/mob/living/simple_animal/lizard) || ismouse(M))
-			src.loc.visible_message("<span class='danger'>[src.loc] sucks [M] into its decompiler. There's a horrible crunching noise.</span>","<span class='danger'>It's a bit of a struggle, but you manage to suck [M] into your decompiler. It makes a series of visceral crunching noises.</span>")
+			src.loc.visible_message(
+				SPAN_DANG("[src.loc] sucks [M] into its decompiler. There's a horrible crunching noise."),
+				SPAN_DANG("It's a bit of a struggle, but you manage to suck [M] into your decompiler. It makes a series of visceral crunching noises.")
+			)
 			new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
 			qdel(M)
 			if(wood)
@@ -45,15 +48,15 @@
 			if(!istype(D))
 				return
 
-			D << "<span class='danger'>You begin decompiling [M].</span>"
+			D << SPAN_DANG("You begin decompiling [M].")
 
 			if(!do_after(D,50))
-				D << "<span class='danger'>You need to remain still while decompiling such a large object.</span>"
+				D << SPAN_DANG("You need to remain still while decompiling such a large object.")
 				return
 
 			if(!M || !D) return
 
-			D << "<span class='danger'>You carefully and thoroughly decompile [M], storing as much of its resources as you can within yourself.</span>"
+			D << SPAN_DANG("You carefully and thoroughly decompile [M], storing as much of its resources as you can within yourself.")
 			qdel(M)
 			new/obj/effect/decal/cleanable/blood/oil(get_turf(src))
 
@@ -128,14 +131,14 @@
 	if(grabbed_something)
 		user << SPAN_NOTE("You deploy your decompiler and clear out the contents of \the [T].")
 	else
-		user << "<span class='danger'>Nothing on \the [T] is useful to you.</span>"
+		user << SPAN_DANG("Nothing on \the [T] is useful to you.")
 	return
 
 //PRETTIER TOOL LIST.
 /mob/living/silicon/robot/drone/installed_modules()
 
 	if(weapon_lock)
-		src << "<span class='danger'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</span>"
+		src << SPAN_DANG("Weapon lock active, unable to use modules! Count:[weaponlock_time]")
 		return
 
 	if(!module)

@@ -301,10 +301,10 @@
 		visible_message(SPAN_NOTE("[user] gently taps [src] with \the [O]."))
 		return
 
-	visible_message("<span class='danger'>[user] attacked [src] with the [O].</span>")
+	visible_message(SPAN_DANG("[user] attacked [src] with the [O]."))
 
 	if(O.force <= resistance)
-		user << "<span class='danger'>This weapon is ineffective, it does no damage.</span>"
+		user << SPAN_DANG("This weapon is ineffective, it does no damage.")
 		return 2
 
 	var/damage = O.force
@@ -405,9 +405,9 @@
 			var/obj/item/meat = new meat_type(get_turf(src))
 			meat.name = "[src.name] [meat.name]"
 		if(small)
-			user.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
+			user.visible_message(SPAN_DANG("[user] chops up \the [src]!"))
 			new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
 			qdel(src)
 		else
-			user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
+			user.visible_message(SPAN_DANG("[user] butchers \the [src] messily!"))
 			gib()

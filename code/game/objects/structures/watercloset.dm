@@ -352,7 +352,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(temperature >= H.species.heat_level_1)
-			H << "<span class='danger'>The water is searing hot!</span>"
+			H << SPAN_DANG("The water is searing hot!")
 		else if(temperature <= H.species.cold_level_1)
 			H << "<span class='warning'>The water is freezing cold!</span>"
 
@@ -444,9 +444,10 @@
 					R.cell.charge -= 20
 				else
 					B.deductcharge(B.hitcost)
-				user.visible_message( \
-					"<span class='danger'>[user] was stunned by \his wet [O]!</span>", \
-					"<span class='userdanger'>[user] was stunned by \his wet [O]!</span>")
+				user.visible_message(
+					SPAN_DANG("[user] was stunned by \his wet [O]!"),
+					"<span class='userdanger'>[user] was stunned by \his wet [O]!</span>"
+				)
 				return 1
 	else if(istype(O, /obj/item/weapon/mop))
 		O.reagents.add_reagent("water", 5)

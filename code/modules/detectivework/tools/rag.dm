@@ -81,14 +81,20 @@
 
 	if(reagents.total_volume)
 		var/target_text = trans_dest? "\the [trans_dest]" : "\the [user.loc]"
-		user.visible_message("<span class='danger'>\The [user] begins to wring out [src] over [target_text].</span>", SPAN_NOTE("You begin to wring out [src] over [target_text]."))
+		user.visible_message(
+			SPAN_DANG("\The [user] begins to wring out [src] over [target_text]."),
+			SPAN_NOTE("You begin to wring out [src] over [target_text].")
+		)
 
 		if(do_after(user, reagents.total_volume*5)) //50 for a fully soaked rag
 			if(trans_dest)
 				reagents.trans_to(trans_dest, reagents.total_volume)
 			else
 				reagents.splash(user.loc, reagents.total_volume)
-			user.visible_message("<span class='danger'>\The [user] wrings out [src] over [target_text].</span>", SPAN_NOTE("You finish to wringing out [src]."))
+			user.visible_message(
+				SPAN_DANG("\The [user] wrings out [src] over [target_text]."),
+				SPAN_NOTE("You finish to wringing out [src].")
+			)
 			update_name()
 
 /obj/item/weapon/reagent_containers/rag/proc/wipe_down(atom/A, mob/user)
@@ -106,17 +112,17 @@
 	if(isliving(target))
 		var/mob/living/M = target
 		if(on_fire)
-			user.visible_message("<span class='danger'>\The [user] hits [target] with [src]!</span>",)
+			user.visible_message(SPAN_DANG("\The [user] hits [target] with [src]!"))
 			user.do_attack_animation(src)
 			M.IgniteMob()
 		else if(reagents.total_volume)
 			if(user.zone_sel.selecting == O_MOUTH)
 				user.do_attack_animation(src)
 				user.visible_message(
-					"<span class='danger'>\The [user] smothers [target] with [src]!</span>",
-					"<span class='warning'>You smother [target] with [src]!</span>",
+					SPAN_DANG("\The [user] smothers [target] with [src]!"),
+					SPAN_WARN("You smother [target] with [src]!"),
 					"You hear some struggling and muffled cries of surprise"
-					)
+				)
 
 				//it's inhaled, so... maybe CHEM_BLOOD doesn't make a whole lot of sense but it's the best we can do for now
 				reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
@@ -175,7 +181,7 @@
 
 	//also copied from matches
 	if(reagents.get_reagent_amount("phoron")) // the phoron explodes when exposed to fire
-		visible_message("<span class='danger'>\The [src] conflagrates violently!</span>")
+		visible_message(SPAN_DANG("\The [src] conflagrates violently!"))
 		var/datum/effect/effect/system/reagents_explosion/e = new()
 		e.set_up(round(reagents.get_reagent_amount("phoron") / 2.5, 1), get_turf(src), 0, 0)
 		e.start()

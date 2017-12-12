@@ -182,7 +182,7 @@ emp_act
 	var/obj/item/organ/external/affecting = get_organ(target_zone)
 
 	if (!affecting || affecting.is_stump())
-		user << "<span class='danger'>They are missing that limb!</span>"
+		user << SPAN_DANG("They are missing that limb!")
 		return
 
 	var/effective_force = I.force
