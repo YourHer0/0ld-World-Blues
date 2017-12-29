@@ -4,7 +4,7 @@
 	icon = 'icons/obj/machinery.dmi'
 	icon_state = "arcade"
 	density = TRUE
-	circuit = /obj/item/weapon/circuitboard/arcade
+	circuit = /obj/item/weapon/circuitboard/machinery/arcade
 	var/enemy_name = "Space Villian"
 	var/temp = "Winners Don't Use Spacedrugs" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points

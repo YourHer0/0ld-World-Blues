@@ -7,7 +7,7 @@
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 40
-	circuit = /obj/item/weapon/circuitboard/biogenerator
+	circuit = /obj/item/weapon/circuitboard/machinery/biogenerator
 	var/processing = 0
 	var/obj/item/weapon/reagent_containers/glass/beaker/beaker = null
 	var/points = 0

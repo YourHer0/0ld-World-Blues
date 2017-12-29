@@ -76,7 +76,7 @@
 	name = "arcade machine"
 	id = "arcademachine"
 	req_tech = list(TECH_DATA = 1)
-	build_path = /obj/item/weapon/circuitboard/arcade
+	build_path = /obj/item/weapon/circuitboard/machinery/arcade
 
 /datum/design/circuit/faxmachine
 	name = "fax machine"
@@ -173,14 +173,14 @@
 	id = "gasheater"
 	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 1)
 	category = TECH_ENGINEERING
-	build_path = /obj/item/weapon/circuitboard/unary_atmos/heater
+	build_path = /obj/item/weapon/circuitboard/machinery/unary_atmos/heater
 
 /datum/design/circuit/gas_cooler
 	name = "gas cooling system"
 	id = "gascooler"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	category = TECH_ENGINEERING
-	build_path = /obj/item/weapon/circuitboard/unary_atmos/cooler
+	build_path = /obj/item/weapon/circuitboard/machinery/unary_atmos/cooler
 
 /datum/design/circuit/secure_airlock
 	name = "secure airlock electronics"
@@ -207,19 +207,19 @@
 /datum/design/circuit/shield/bubble
 	name = "bubble"
 	id = "shield_gen"
-	build_path = /obj/item/weapon/circuitboard/shield_gen
+	build_path = /obj/item/weapon/circuitboard/machinery/shield_gen
 
 /datum/design/circuit/shield/hull
 	name = "hull"
 	id = "shield_gen_ex"
-	build_path = /obj/item/weapon/circuitboard/shield_gen_ex
+	build_path = /obj/item/weapon/circuitboard/machinery/shield_gen_ex
 
 /datum/design/circuit/shield/capacitor
 	name = "capacitor"
 	desc = "Allows for the construction of a shield capacitor circuit board."
 	id = "shield_cap"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 4)
-	build_path = /obj/item/weapon/circuitboard/shield_cap
+	build_path = /obj/item/weapon/circuitboard/machinery/shield_gen
 
 /datum/design/circuit/aifixer
 	name = "AI integrity restorer"
@@ -261,14 +261,14 @@
 	id = "clonepod"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	category = TECH_BIO
-	build_path = /obj/item/weapon/circuitboard/clonepod
+	build_path = /obj/item/weapon/circuitboard/machinery/clonepod
 
 /datum/design/circuit/clonescanner
 	name = "cloning scanner"
 	id = "clonescanner"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	category = TECH_BIO
-	build_path = /obj/item/weapon/circuitboard/clonescanner
+	build_path = /obj/item/weapon/circuitboard/machinery/clonescanner
 
 /datum/design/circuit/bioprinter
 	name = "bioprinter"
@@ -316,46 +316,46 @@
 /datum/design/circuit/tcommsat/server
 	name = "server mainframe"
 	id = "tcom-server"
-	build_path = /obj/item/weapon/circuitboard/telecomms/server
+	build_path = /obj/item/weapon/circuitboard/machinery/server
 
 /datum/design/circuit/tcommsat/processor
 	name = "processor unit"
 	id = "tcom-processor"
-	build_path = /obj/item/weapon/circuitboard/telecomms/processor
+	build_path = /obj/item/weapon/circuitboard/machinery/processor
 
 /datum/design/circuit/tcommsat/bus
 	name = "bus mainframe"
 	id = "tcom-bus"
-	build_path = /obj/item/weapon/circuitboard/telecomms/bus
+	build_path = /obj/item/weapon/circuitboard/machinery/bus
 
 /datum/design/circuit/tcommsat/hub
 	name = "hub mainframe"
 	id = "tcom-hub"
-	build_path = /obj/item/weapon/circuitboard/telecomms/hub
+	build_path = /obj/item/weapon/circuitboard/machinery/hub
 
 /datum/design/circuit/tcommsat/relay
 	name = "relay mainframe"
 	id = "tcom-relay"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 4, TECH_BLUESPACE = 3)
-	build_path = /obj/item/weapon/circuitboard/telecomms/relay
+	build_path = /obj/item/weapon/circuitboard/machinery/relay
 
 /datum/design/circuit/tcommsat/broadcaster
 	name = "subspace broadcaster"
 	id = "tcom-broadcaster"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_BLUESPACE = 2)
-	build_path = /obj/item/weapon/circuitboard/telecomms/broadcaster
+	build_path = /obj/item/weapon/circuitboard/machinery/broadcaster
 
 /datum/design/circuit/tcommsat/receiver
 	name = "subspace receiver"
 	id = "tcom-receiver"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2)
-	build_path = /obj/item/weapon/circuitboard/telecomms/receiver
+	build_path = /obj/item/weapon/circuitboard/machinery/receiver
 
 /datum/design/circuit/tcommsat/bluespacerelay
 	name = "emergency bluespace relay"
 	id = "bluespace-relay"
 	req_tech = list(TECH_DATA = 4, TECH_BLUESPACE = 4)
-	build_path = /obj/item/weapon/circuitboard/bluespacerelay
+	build_path = /obj/item/weapon/circuitboard/machinery/bluespacerelay
 
 ////////////////////////////////////////
 //////////Misc Circuit Boards///////////
@@ -365,61 +365,61 @@
 	name = "destructive analyzer"
 	id = "destructive_analyzer"
 	req_tech = list(TECH_DATA = 2, TECH_MAGNET = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/weapon/circuitboard/destructive_analyzer
+	build_path = /obj/item/weapon/circuitboard/machinery/destructive_analyzer
 
 /datum/design/circuit/protolathe
 	name = "protolathe"
 	id = "protolathe"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/weapon/circuitboard/protolathe
+	build_path = /obj/item/weapon/circuitboard/machinery/protolathe
 
 /datum/design/circuit/circuit_imprinter
 	name = "circuit imprinter"
 	id = "circuit_imprinter"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/weapon/circuitboard/circuit_imprinter
+	build_path = /obj/item/weapon/circuitboard/machinery/circuit_imprinter
 
 /datum/design/circuit/autolathe
 	name = "autolathe board"
 	id = "autolathe"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/weapon/circuitboard/autolathe
+	build_path = /obj/item/weapon/circuitboard/machinery/autolathe
 
 /datum/design/circuit/autolathe/industrial
 	name = "industrial autolathe board"
 	id = "autolathe_industrial"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 4)
-	build_path = /obj/item/weapon/circuitboard/autolathe/industrial
+	build_path = /obj/item/weapon/circuitboard/machinery/autolathe/industrial
 
 /datum/design/circuit/rdservercontrol
 	name = "R&D server control console"
 	id = "rdservercontrol"
 	req_tech = list(TECH_DATA = 3)
-	build_path = /obj/item/weapon/circuitboard/rdservercontrol
+	build_path = /obj/item/weapon/circuitboard/machinery/rdservercontrol
 
 /datum/design/circuit/rdserver
 	name = "R&D server"
 	id = "rdserver"
 	req_tech = list(TECH_DATA = 3)
-	build_path = /obj/item/weapon/circuitboard/rdserver
+	build_path = /obj/item/weapon/circuitboard/machinery/rdserver
 
 /datum/design/circuit/PDApainter
 	name = "PDA painter board"
 	id = "pda_painter"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/weapon/circuitboard/pdapainter
+	build_path = /obj/item/weapon/circuitboard/machinery/pdapainter
 
 /datum/design/circuit/biogenerator
 	name = "biogenerator"
 	id = "biogenerator"
 	req_tech = list(TECH_DATA = 2)
-	build_path = /obj/item/weapon/circuitboard/biogenerator
+	build_path = /obj/item/weapon/circuitboard/machinery/biogenerator
 
 /datum/design/circuit/recharge_station
 	name = "cyborg recharge station"
 	id = "recharge_station"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 2)
-	build_path = /obj/item/weapon/circuitboard/recharge_station
+	build_path = /obj/item/weapon/circuitboard/machinery/recharge_station
 
 /////////////////////////////////////////
 ////////Power Stuff Circuitboards////////
@@ -432,7 +432,7 @@
 	materials = list(MATERIAL_GLASS = 2000)
 	chemicals = list("sacid" = 20)
 	category = TECH_ENGINEERING
-	build_path = /obj/item/weapon/circuitboard/pacman
+	build_path = /obj/item/weapon/circuitboard/machinery/pacman
 
 /datum/design/circuit/superpacman
 	name = "SUPERPACMAN-type generator"
@@ -442,7 +442,7 @@
 	materials = list(MATERIAL_GLASS = 2000)
 	chemicals = list("sacid" = 20)
 	category = TECH_ENGINEERING
-	build_path = /obj/item/weapon/circuitboard/pacman/super
+	build_path = /obj/item/weapon/circuitboard/machinery/pacman/super
 
 /datum/design/circuit/mrspacman
 	name = "MRSPACMAN-type generator"
@@ -452,7 +452,7 @@
 	materials = list(MATERIAL_GLASS = 2000)
 	chemicals = list("sacid" = 20)
 	category = TECH_ENGINEERING
-	build_path = /obj/item/weapon/circuitboard/pacman/mrs
+	build_path = /obj/item/weapon/circuitboard/machinery/pacman/mrs
 
 /datum/design/circuit/batteryrack
 	name = "cell rack PSU"
@@ -461,7 +461,7 @@
 	materials = list(MATERIAL_GLASS = 2000)
 	chemicals = list("sacid" = 20)
 	category = TECH_ENGINEERING
-	build_path = /obj/item/weapon/circuitboard/batteryrack
+	build_path = /obj/item/weapon/circuitboard/machinery/batteryrack
 
 /datum/design/circuit/smes_cell
 	name = "'SMES' superconductive magnetic energy storage"
@@ -472,5 +472,5 @@
 	materials = list(MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000, MATERIAL_SILVER = 1000, MATERIAL_DIAMOND = 500)
 	chemicals = list("sacid" = 20)
 	category = TECH_ENGINEERING
-	build_path = /obj/item/weapon/circuitboard/smes
+	build_path = /obj/item/weapon/circuitboard/machinery/smes
 

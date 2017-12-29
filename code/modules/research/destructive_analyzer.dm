@@ -9,7 +9,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 /obj/machinery/r_n_d/destructive_analyzer
 	name = "destructive analyzer"
 	icon_state = "d_analyzer"
-	circuit = /obj/item/weapon/circuitboard/destructive_analyzer
+	circuit = /obj/item/weapon/circuitboard/machinery/destructive_analyzer
 	var/obj/item/weapon/loaded_item = null
 	var/decon_mod = 1
 	var/min_reliability = 90

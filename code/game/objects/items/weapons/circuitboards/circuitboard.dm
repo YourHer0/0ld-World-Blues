@@ -16,6 +16,9 @@
 	var/board_type = "computer"
 	var/list/req_components = null
 
+/obj/item/weapon/circuitboard/machinery
+	board_type = "machine"
+
 //Called when the circuitboard is used to contruct a new machine.
 /obj/item/weapon/circuitboard/proc/construct(var/obj/machinery/M)
 	if(istype(M, build_path))

@@ -4,17 +4,25 @@
 	icon = 'icons/obj/virology.dmi'
 	icon_state = "centrifuge"
 	density = TRUE
+	circuit = /obj/item/weapon/circuitboard/machinery/virulogy
 	var/curing
 	var/isolating
 
 	var/obj/item/weapon/reagent_containers/glass/beaker/vial/sample = null
 	var/datum/disease2/disease/virus2 = null
 
-/obj/machinery/centrifuge/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/weapon/screwdriver))
-		return ..(O,user)
+/obj/machinery/centrifuge/default_deconstruction_crowbar(mob/living/user, obj/item/O)
+	if(sample)
+		user << SPAN_WARN("Please remove sample first!")
+		return TRUE
+	return ..()
 
-	if(istype(O,/obj/item/weapon/reagent_containers/glass/beaker/vial))
+/obj/machinery/centrifuge/attackby(var/obj/O as obj, var/mob/user as mob)
+	if(default_deconstruction_screwdriver(user, O))
+		return
+	else if(default_deconstruction_crowbar(user, O))
+		return
+	else if(istype(O,/obj/item/weapon/reagent_containers/glass/beaker/vial))
 		if(sample)
 			user << "\The [src] is already loaded."
 			return
@@ -22,7 +30,10 @@
 		sample = O
 		user.drop_from_inventory(O, src)
 
-		user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
+		user.visible_message(
+			"[user] adds \a [O] to \the [src].",
+			"You add \a [O] to \the [src]."
+		)
 		nanomanager.update_uis(src)
 
 	src.attack_hand(user)

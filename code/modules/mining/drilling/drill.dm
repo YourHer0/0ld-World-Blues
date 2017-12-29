@@ -9,7 +9,7 @@
 	name = "mining drill head"
 	desc = "An enormous drill."
 	icon_state = "mining_drill"
-	circuit = /obj/item/weapon/circuitboard/miningdrill
+	circuit = /obj/item/weapon/circuitboard/machinery/miningdrill
 	var/braces_needed = 2
 	var/list/supports = list()
 	var/supported = 0

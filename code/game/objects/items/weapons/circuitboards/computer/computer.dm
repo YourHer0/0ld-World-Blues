@@ -120,7 +120,7 @@
 	name = T_BOARD("exosuit control console")
 	build_path = /obj/machinery/computer/mecha
 
-/obj/item/weapon/circuitboard/rdservercontrol
+/obj/item/weapon/circuitboard/machinery/rdservercontrol
 	name = T_BOARD("R&D server control console")
 	build_path = /obj/machinery/computer/rdservercontrol
 

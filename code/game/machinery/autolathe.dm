@@ -7,7 +7,7 @@
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/weapon/circuitboard/autolathe
+	circuit = /obj/item/weapon/circuitboard/machinery/autolathe
 
 	var/tmp/list/machine_recipes
 	var/list/stored_material =  list(MATERIAL_STEEL = 0, MATERIAL_GLASS = 0)
@@ -28,7 +28,7 @@
 /obj/machinery/autolathe/industrial
 	name = "industrial autolathe"
 	desc = "It produces items using different materials."
-	circuit = /obj/item/weapon/circuitboard/autolathe/industrial
+	circuit = /obj/item/weapon/circuitboard/machinery/autolathe/industrial
 
 	idle_power_usage = 20
 	active_power_usage = 2300

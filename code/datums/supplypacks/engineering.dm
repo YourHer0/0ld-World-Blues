@@ -118,7 +118,7 @@
 	access = access_ce
 
 /datum/supply_packs/eng/shield_gen
-	contains = list(/obj/item/weapon/circuitboard/shield_gen)
+	contains = list(/obj/item/weapon/circuitboard/machinery/shield_gen)
 	name = "Bubble shield generator circuitry"
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure
@@ -126,7 +126,7 @@
 	access = access_ce
 
 /datum/supply_packs/eng/shield_gen_ex
-	contains = list(/obj/item/weapon/circuitboard/shield_gen_ex)
+	contains = list(/obj/item/weapon/circuitboard/machinery/shield_gen_ex)
 	name = "Hull shield generator circuitry"
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure
@@ -134,7 +134,7 @@
 	access = access_ce
 
 /datum/supply_packs/eng/shield_cap
-	contains = list(/obj/item/weapon/circuitboard/shield_cap)
+	contains = list(/obj/item/weapon/circuitboard/machinery/shield_gen)
 	name = "Bubble shield capacitor circuitry"
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure
@@ -185,7 +185,7 @@
 		/obj/item/weapon/stock_parts/micro_laser,
 		/obj/item/weapon/stock_parts/capacitor,
 		/obj/item/weapon/stock_parts/matter_bin,
-		/obj/item/weapon/circuitboard/pacman
+		/obj/item/weapon/circuitboard/machinery/pacman
 	)
 
 /datum/supply_packs/eng/super_pacman_parts
@@ -198,7 +198,7 @@
 		/obj/item/weapon/stock_parts/micro_laser,
 		/obj/item/weapon/stock_parts/capacitor,
 		/obj/item/weapon/stock_parts/matter_bin,
-		/obj/item/weapon/circuitboard/pacman/super
+		/obj/item/weapon/circuitboard/machinery/pacman/super
 	)
 
 /datum/supply_packs/bluespacerelay
@@ -207,7 +207,7 @@
 	containername = "emergency bluespace relay assembly kit"
 	containertype = /obj/structure/closet/crate
 	contains = list(
-		/obj/item/weapon/circuitboard/bluespacerelay,
+		/obj/item/weapon/circuitboard/machinery/bluespacerelay,
 		/obj/item/weapon/stock_parts/manipulator = 2,
 		/obj/item/weapon/stock_parts/subspace/filter,
 		/obj/item/weapon/stock_parts/subspace/crystal,

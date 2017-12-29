@@ -11,7 +11,7 @@ Note: Must be placed west/left of and R&D console to function.
 	name = "\improper Protolathe"
 	icon_state = "protolathe"
 	flags = OPENCONTAINER
-	circuit = /obj/item/weapon/circuitboard/protolathe
+	circuit = /obj/item/weapon/circuitboard/machinery/protolathe
 
 	use_power = 1
 	idle_power_usage = 30

@@ -85,7 +85,7 @@
 /obj/machinery/power/port_gen/pacman
 	name = "\improper P.A.C.M.A.N.-type Portable Generator"
 	desc = "A power generator that runs on solid phoron sheets. Rated for 80 kW max safe output."
-	circuit = /obj/item/weapon/circuitboard/pacman
+	circuit = /obj/item/weapon/circuitboard/machinery/pacman
 
 	var/material/fuel_material = MATERIAL_PHORON
 	var/sheet_name = "Phoron Sheets"
@@ -368,7 +368,7 @@
 	icon_state = "portgen1"
 	fuel_material = MATERIAL_URANIUM
 	time_per_sheet = 576 //same power output, but a 50 sheet stack will last 2 hours at max safe power
-	circuit = /obj/item/weapon/circuitboard/pacman/super
+	circuit = /obj/item/weapon/circuitboard/machinery/pacman/super
 
 /obj/machinery/power/port_gen/pacman/super/UseFuel()
 	//produces a tiny amount of radiation when in use
@@ -402,7 +402,7 @@
 	time_per_sheet = 576
 	max_temperature = 800
 	temperature_gain = 90
-	circuit = /obj/item/weapon/circuitboard/pacman/mrs
+	circuit = /obj/item/weapon/circuitboard/machinery/pacman/mrs
 
 /obj/machinery/power/port_gen/pacman/mrs/explode()
 	//no special effects, but the explosion is pretty big (same as a supermatter shard).

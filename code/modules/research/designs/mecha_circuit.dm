@@ -16,7 +16,7 @@ datum/design/circuit/mechacontrol
 	id = "mechfab"
 	category = "Mechas"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
-	build_path = /obj/item/weapon/circuitboard/mechfab
+	build_path = /obj/item/weapon/circuitboard/machinery/mechfab
 
 ///////////////////////////////////
 ////////////Mecha Modules//////////

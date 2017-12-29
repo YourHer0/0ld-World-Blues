@@ -2,7 +2,7 @@
 	name = "R&D Server"
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "server"
-	circuit = /obj/item/weapon/circuitboard/rdserver
+	circuit = /obj/item/weapon/circuitboard/machinery/rdserver
 	var/datum/research/files
 	var/health = 100
 	var/list/id_with_upload = list()		//List of R&D consoles with upload to server access.
@@ -148,7 +148,7 @@
 	name = "R&D Server Controller"
 	screen_icon = "rdcomp"
 	light_color = "#a97faa"
-	circuit = /obj/item/weapon/circuitboard/rdservercontrol
+	circuit = /obj/item/weapon/circuitboard/machinery/rdservercontrol
 	var/screen = 0
 	var/obj/machinery/r_n_d/server/temp_server
 	var/list/servers = list()

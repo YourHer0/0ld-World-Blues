@@ -1,8 +1,4 @@
-#ifndef T_BOARD
-#error T_BOARD macro is not defined but we need it!
-#endif
-
-/obj/item/weapon/circuitboard/jukebox
+/obj/item/weapon/circuitboard/machinery/jukebox
 	name = T_BOARD("jukebox")
 	build_path = /obj/machinery/media/jukebox
 	board_type = new /datum/frame/frame_types/machine

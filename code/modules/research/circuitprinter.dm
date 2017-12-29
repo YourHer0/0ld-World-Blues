@@ -8,7 +8,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	name = "\improper Circuit Imprinter"
 	icon_state = "circuit_imprinter"
 	flags = OPENCONTAINER
-	circuit = /obj/item/weapon/circuitboard/circuit_imprinter
+	circuit = /obj/item/weapon/circuitboard/machinery/circuit_imprinter
 
 	materials = list(MATERIAL_GLASS = 0, MATERIAL_GOLD = 0, MATERIAL_DIAMOND = 0, MATERIAL_URANIUM = 0)
 
