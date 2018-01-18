@@ -24,31 +24,45 @@ var/datum/body_build/default_body_build = new
 	var/r_hand		= 'icons/inv_slots/items/items_r_default.dmi'
 	var/l_hand		= 'icons/inv_slots/items/items_l_default.dmi'
 
-	var/list/hand_groups = list()
+	var/list/r_hand_overlays = list()
+	var/list/l_hand_overlays = list()
+
+/datum/body_build/proc/collectInhandsOverlays()
+	r_hand_overlays[SPRITE_UNIFORMS] = 'icons/inv_slots/uniforms/hand_r_default.dmi'
+	r_hand_overlays[SPRITE_BACKPACK] = 'icons/inv_slots/back/hand_r_default.dmi'
+	r_hand_overlays[SPRITE_GLOVES]   = 'icons/inv_slots/gloves/hand_r_default.dmi'
+	r_hand_overlays[SPRITE_MELEE]    = 'icons/inv_slots/items/melee_r_default.dmi'
+	r_hand_overlays[SPRITE_STORAGE]  = 'icons/inv_slots/items/storage_r_default.dmi'
+	r_hand_overlays[SPRITE_GUNS]     = 'icons/inv_slots/items/guns_r_default.dmi'
+	r_hand_overlays[SPRITE_SUITS]    = 'icons/inv_slots/suits/hand_r_default.dmi'
+
+/datum/body_build/proc/buildInhandsOverlays()
+	for(var/group in r_hand_overlays)
+		var/icon/basic = r_hand_overlays[group]
+		var/icon/temp = icon(basic, dir=SOUTH|NORTH)
+		temp.Flip(WEST)
+
+		var/icon/side = icon(basic,dir=EAST)
+		side.Flip(WEST)
+		temp.Insert(side, dir=EAST)
+
+		side = icon(basic,dir=WEST)
+		side.Flip(WEST)
+		temp.Insert(side, dir=WEST)
+
+		l_hand_overlays[group] = temp
 
 /datum/body_build/New()
-	hand_groups["[SPRITE_UNIFORMS]_l"] = 'icons/inv_slots/uniforms/hand_l_default.dmi'
-	hand_groups["[SPRITE_UNIFORMS]_r"] = 'icons/inv_slots/uniforms/hand_r_default.dmi'
-	hand_groups["[SPRITE_SUITS]_r"]    = 'icons/inv_slots/suits/hand_r_default.dmi'
-	hand_groups["[SPRITE_SUITS]_l"]    = 'icons/inv_slots/suits/hand_l_default.dmi'
-	hand_groups["[SPRITE_BACKPACK]_l"] = 'icons/inv_slots/back/hand_l_default.dmi'
-	hand_groups["[SPRITE_BACKPACK]_r"] = 'icons/inv_slots/back/hand_r_default.dmi'
-	hand_groups["[SPRITE_GLOVES]_l"]   = 'icons/inv_slots/gloves/hand_l_default.dmi'
-	hand_groups["[SPRITE_GLOVES]_r"]   = 'icons/inv_slots/gloves/hand_r_default.dmi'
-	hand_groups["[SPRITE_MELEE]_l"]    = 'icons/inv_slots/items/melee_l_default.dmi'
-	hand_groups["[SPRITE_MELEE]_r"]    = 'icons/inv_slots/items/melee_r_default.dmi'
-	hand_groups["[SPRITE_STORAGE]_l"]  = 'icons/inv_slots/items/storage_l_default.dmi'
-	hand_groups["[SPRITE_STORAGE]_r"]  = 'icons/inv_slots/items/storage_r_default.dmi'
-	hand_groups["[SPRITE_GUNS]_l"]     = 'icons/inv_slots/items/guns_l_default.dmi'
-	hand_groups["[SPRITE_GUNS]_r"]     = 'icons/inv_slots/items/guns_r_default.dmi'
+	collectInhandsOverlays()
+	buildInhandsOverlays()
 
 /datum/body_build/proc/get_inhand_icon(var/group, var/hand)
+	var/list/sprites = r_hand_overlays
 	if(hand == LEFT)
-		group += "_l"
-	else
-		group += "_r"
-	if(group in hand_groups)
-		return hand_groups[group]
+		sprites = l_hand_overlays
+
+	if(group in sprites)
+		return sprites[group]
 	else
 		return (hand == LEFT) ? l_hand : r_hand
 
@@ -98,16 +112,11 @@ var/datum/body_build/default_body_build = new
 	hidden_icon 	= 'icons/inv_slots/hidden/mob_slim.dmi'
 	rig_back		= 'icons/inv_slots/rig/mob_slim.dmi'
 
-/datum/body_build/slim/New()
-	..()
-	hand_groups["[SPRITE_UNIFORMS]_l"] = 'icons/inv_slots/uniforms/hand_l_slim.dmi'
-	hand_groups["[SPRITE_UNIFORMS]_r"] = 'icons/inv_slots/uniforms/hand_r_slim.dmi'
-	hand_groups["[SPRITE_BACKPACK]_l"] = 'icons/inv_slots/back/hand_l_slim.dmi'
-	hand_groups["[SPRITE_BACKPACK]_r"] = 'icons/inv_slots/back/hand_r_slim.dmi'
-	hand_groups["[SPRITE_GLOVES]_l"]   = 'icons/inv_slots/gloves/hand_l_slim.dmi'
-	hand_groups["[SPRITE_GLOVES]_r"]   = 'icons/inv_slots/gloves/hand_r_slim.dmi'
-	hand_groups["[SPRITE_MELEE]_l"]    = 'icons/inv_slots/items/melee_l_slim.dmi'
-	hand_groups["[SPRITE_MELEE]_r"]    = 'icons/inv_slots/items/melee_r_slim.dmi'
+/datum/body_build/slim/collectInhandsOverlays()
+	r_hand_overlays[SPRITE_UNIFORMS] = 'icons/inv_slots/uniforms/hand_r_slim.dmi'
+	r_hand_overlays[SPRITE_BACKPACK] = 'icons/inv_slots/back/hand_r_slim.dmi'
+	r_hand_overlays[SPRITE_GLOVES]   = 'icons/inv_slots/gloves/hand_r_slim.dmi'
+	r_hand_overlays[SPRITE_MELEE]    = 'icons/inv_slots/items/melee_r_slim.dmi'
 
 /datum/body_build/tajaran
 	name		= "Tajaran"
