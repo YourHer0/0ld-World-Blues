@@ -89,87 +89,68 @@
 	if(!blinded)
 		flick("flash", flash)
 
-	var/shielded = 0
-	var/b_loss = null
-	var/f_loss = null
-	switch (severity)
-		if (1.0)
-			b_loss += 500
-			if (!prob(getarmor(null, "bomb")))
-				gib()
-				return
-			else
-				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
-				throw_at(target, 200, 4)
-			//return
-//				var/atom/target = get_edge_target_turf(user, get_dir(src, get_step_away(user, src)))
-				//user.throw_at(target, 200, 4)
+	var/explosion_power = 4 - severity
+	var/damage = 50 * explosion_power
+	var/armor = getarmor(null, "bomb")
+	var/absorbed_damage = 75 / 100 * armor
 
-		if (2.0)
-			if (!shielded)
-				b_loss += 60
 
-			f_loss += 60
+	switch(absorbed_damage)
+		if(50 to 75)
+			src << SPAN_NOTE("Your armor absorbs blow energy!")
+		if(25 to 49)
+			src << SPAN_NOTE("Your armor softens the blow!")
 
-			if (prob(getarmor(null, "bomb")))
-				b_loss = b_loss/1.5
-				f_loss = f_loss/1.5
+	if((explosion_power * absorbed_damage) > 1)
+		var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
+		throw_at(target, (explosion_power - 1) * 4, 4)
 
-			if (!get_ear_protection() >= 2)
-				ear_damage += 30
-				ear_deaf += 120
-			if (prob(70) && !shielded)
-				Paralyse(10)
+	damage = damage * (100 - absorbed_damage) / 100
+	if(damage > 100)
+		gib()
 
-		if(3.0)
-			b_loss += 30
-			if (prob(getarmor(null, "bomb")))
-				b_loss = b_loss/2
-			if (!get_ear_protection() >= 2)
-				ear_damage += 15
-				ear_deaf += 60
-			if (prob(50) && !shielded)
-				Paralyse(10)
+	if (!get_ear_protection() >= 2)
+		ear_damage += (explosion_power) * 15
+		ear_deaf += (explosion_power) * 60
 
-	var/update = 0
+	if(prob(explosion_power * 25) + 15)
+		Paralyse(10)
 
+	damage = damage/2
+
+	var/update = FALSE
 	// focus most of the blast on one organ
 	var/obj/item/organ/external/take_blast = pick(organs)
-	update |= take_blast.take_damage(b_loss * 0.9, f_loss * 0.9, used_weapon = "Explosive blast")
+	update |= take_blast.take_damage(damage * 0.5, damage * 0.5, used_weapon = "Explosive blast")
 
-	// distribute the remaining 10% on all limbs equally
-	b_loss *= 0.1
-	f_loss *= 0.1
-
+	var/count = 0
 	var/weapon_message = "Explosive Blast"
-
 	for(var/obj/item/organ/external/temp in organs)
+		if(count++ > 5)
+			break
 		switch(temp.organ_tag)
-			if(BP_HEAD)
-				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message)
 			if(BP_CHEST)
-				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message)
+				update |= temp.take_damage(damage * 0.2, damage * 0.2, used_weapon = weapon_message)
 			else
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
-	if(update)	UpdateDamageIcon()
+				update |= temp.take_damage(damage * 0.1, damage * 0.1, used_weapon = weapon_message)
+	if(update)
+		UpdateDamageIcon()
 
 
 /mob/living/carbon/human/blob_act()
 	if(stat == DEAD)
 		return
-	show_message("\red The blob attacks you!")
+	show_message(SPAN_NOTE("The blob attacks you!"))
 	var/dam_zone = pick(BP_CHEST, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG)
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
 	apply_damage(rand(30,40), BRUTE, affecting, run_armor_check(affecting, "melee"))
-	return
 
 /mob/living/carbon/human/meteorhit(O as obj)
-	for(var/mob/M in viewers(src, null))
-		if ((M.client && !(M.blinded)))
-			M.show_message("\red [src] has been hit by [O]", 1)
+	src.visible_message(SPAN_WARN("[src] has been hit by [O]"))
 	if (health > 0)
 		var/obj/item/organ/external/affecting = get_organ(pick(BP_CHEST, BP_CHEST, BP_CHEST, BP_HEAD))
-		if(!affecting)	return
+		if(!affecting)
+			return
 		if (istype(O, /obj/effect/immovablerod))
 			if(affecting.take_damage(101, 0))
 				UpdateDamageIcon()
@@ -177,7 +158,6 @@
 			if(affecting.take_damage((istype(O, /obj/effect/meteor/small) ? 10 : 25), 30))
 				UpdateDamageIcon()
 		updatehealth()
-	return
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
 	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
